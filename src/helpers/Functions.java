@@ -8,6 +8,8 @@ package helpers;
 import helpdeskcode.DataBaseConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -74,9 +76,61 @@ public class Functions {
             dialogBuilder("Record Saved");
             stmt.close();
             
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
  
+    }
+    /*
+    *insert a single record in the database
+    */
+    public void saveSingleRecord(String record,String columnName,String tableName)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            String sql="insert into "+tableName+" (" +columnName+ ") values (?)";
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, record);
+            stmt.execute();
+            dialogBuilder("Record Saved");
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    /*
+    *insert two records in the database
+    */
+    public void saveTwoRecords(String recordOne,int recordTwo,String columnName1,String columnName2,String tableName)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            String sql="insert into "+tableName+" (" +columnName1+","+ columnName2+ ") values (?,?)";
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, recordOne );
+            stmt.setInt(2, recordTwo);
+            stmt.execute();
+            dialogBuilder("Record Saved");
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+   /*
+    * function for retrieving records from the database.
+    
+    */ 
+    public ResultSet showRecords(String sql) throws ClassNotFoundException, SQLException
+    {
+        try{
+             conn=DataBaseConnection.getConnection();
+             stmt=conn.prepareStatement(sql);
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return stmt.executeQuery(sql);
     }
 }
