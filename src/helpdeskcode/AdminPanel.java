@@ -85,6 +85,15 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        saveServerBtn = new javax.swing.JButton();
+        iPAddressInput = new javax.swing.JTextField();
+        userNameInputServer = new javax.swing.JTextField();
+        passwordServerInput = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         aboutJOptionMenu = new javax.swing.JMenuBar();
@@ -494,15 +503,85 @@ public class AdminPanel extends javax.swing.JFrame {
 
         userTabbedMenu.addTab("Contact Help Desk User", jPanel9);
 
+        jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 0, 204), 3, true));
+
+        jLabel18.setText("Host IP Address:");
+
+        jLabel21.setText("User Name:");
+
+        jLabel22.setText("Password:");
+
+        saveServerBtn.setText("Save Configuration");
+        saveServerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveServerBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(saveServerBtn)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(iPAddressInput, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                            .addComponent(userNameInputServer)
+                            .addComponent(passwordServerInput, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(iPAddressInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(userNameInputServer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(passwordServerInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(saveServerBtn)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        jLabel19.setText("Make server the server configurations are similar to the details of server computer that has the database");
+
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(jPanel13Layout.createSequentialGroup()
+                .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel13Layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         userTabbedMenu.addTab("Server Configuration", jPanel13);
@@ -690,6 +769,22 @@ public class AdminPanel extends javax.swing.JFrame {
             Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_userTabbedMenuMouseClicked
+
+    private void saveServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveServerBtnActionPerformed
+        // TODO add your handling code here:
+        String ipAddress=iPAddressInput.getText().toString();
+        String pass=passwordServerInput.getText().toString();
+        String userServerName=userNameInputServer.getText().toString();
+        String [] serverDetails={ipAddress,pass,userServerName};
+        String tableName="server";
+        String firstColumn="Host_Ip";
+        String [] columnServerNames={"Host_Ip","Password","Db_Name"};
+        Functions serverInserter=new Functions();
+        serverInserter.saveDetails(columnServerNames, serverDetails, tableName, firstColumn);
+        iPAddressInput.setText("");
+        passwordServerInput.setText("");
+        userNameInputServer.setText("");
+    }//GEN-LAST:event_saveServerBtnActionPerformed
  /*
     *this method is used to 
     */
@@ -760,6 +855,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JComboBox courseCombo;
     private javax.swing.JButton createUserBtn;
     private javax.swing.JTextField deviceNameInput;
+    private javax.swing.JTextField iPAddressInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -769,7 +865,11 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -783,6 +883,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -796,9 +897,12 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JComboBox officeIdInput;
     private javax.swing.JTextField officeNameInput;
     private javax.swing.JTextField passInput;
+    private javax.swing.JTextField passwordServerInput;
+    private javax.swing.JButton saveServerBtn;
     private javax.swing.JComboBox serviceTimeCombo;
     private javax.swing.JComboBox sexCombo;
     private javax.swing.JTextField userNameInput;
+    private javax.swing.JTextField userNameInputServer;
     private javax.swing.JTabbedPane userTabbedMenu;
     private javax.swing.JComboBox userTypeCombo;
     private javax.swing.JTable usersDataTable;

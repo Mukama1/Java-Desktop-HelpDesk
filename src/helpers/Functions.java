@@ -6,10 +6,13 @@
 package helpers;
 
 import helpdeskcode.DataBaseConnection;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -133,4 +136,55 @@ public class Functions {
         }
         return stmt.executeQuery(sql);
     }
+    //function for checking user authentication
+    public String Authentication(String loginId, String Password)
+    {   
+        try
+        {
+            String userType="";
+                String query = "SELECT * FROM users WHERE User_Name='"+loginId+"' AND Password = '"+Password+"'";
+                conn = DataBaseConnection.getConnection();
+                stmt = conn.prepareStatement(query);
+                ResultSet res = stmt.executeQuery();
+                boolean isCheck=false;
+                if(res.next()){
+                     userType=res.getString("User_Type");
+                isCheck=true;
+                }
+                return userType;
+        }catch(Exception e){
+            String userType = "Not Found";
+            e.printStackTrace();
+            return userType;
+        }
+    }
+    
+    //function for centering the JFrame
+    public static void center(JFrame frame) {
+
+        // get the size of the screen, on systems with multiple displays,
+
+        // the primary display is used
+     Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+
+        // calculate the new location of the window
+
+        int w = frame.getSize().width;
+
+        int h = frame.getSize().height;
+
+        int x = (dim.width - w) / 2;
+
+        int y = (dim.height - h) / 2;
+
+        // moves this component to a new location, the top-left corner of
+
+        // the new location is specified by the x and y
+
+        // parameters in the coordinate space of this component's parent
+
+        frame.setLocation(x, y);
+
+    }
+
 }
