@@ -146,10 +146,10 @@ public class Functions {
                 conn = DataBaseConnection.getConnection();
                 stmt = conn.prepareStatement(query);
                 ResultSet res = stmt.executeQuery();
-                boolean isCheck=false;
+                //boolean isCheck=false;
                 if(res.next()){
                      userType=res.getString("User_Type");
-                isCheck=true;
+                //isCheck=true;
                 }
                 return userType;
         }catch(Exception e){
