@@ -135,7 +135,20 @@ public class Main extends javax.swing.JFrame {
             AdminPanel startAdmin=new AdminPanel();
             startAdmin.show();
             this.setVisible(false);
-        }else{
+        }
+        else if(returnAuth.equals("HelpDesk"))
+        {
+            HelpDeskPanel startHdUser=new HelpDeskPanel();
+            startHdUser.show();
+            this.setVisible(false);
+        }
+        else if(returnAuth.equals("OfficialUser"))
+        {
+            OtherUsersPanel startOfficialUser=new OtherUsersPanel();
+            startOfficialUser.show();
+            this.setVisible(false);
+        }
+        else{
             JOptionPane.showMessageDialog(null, "Please Try Again");
             userNameAuthInput.setText("");
             passwordAuthInput.setText("");

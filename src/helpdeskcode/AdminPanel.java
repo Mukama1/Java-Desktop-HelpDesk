@@ -29,6 +29,8 @@ public class AdminPanel extends javax.swing.JFrame {
      */
     public AdminPanel() {
         initComponents();
+        fillUserCombo();
+        fillUserTaskCombo();
         fillCombo();
     }
 
@@ -59,8 +61,16 @@ public class AdminPanel extends javax.swing.JFrame {
         passInput = new javax.swing.JTextField();
         userTypeCombo = new javax.swing.JComboBox();
         serviceTimeCombo = new javax.swing.JComboBox();
-        courseCombo = new javax.swing.JComboBox();
         sexCombo = new javax.swing.JComboBox();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        fullNameInput = new javax.swing.JTextField();
+        dobInput = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        emailInput = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        phoneInput = new javax.swing.JTextField();
+        jobTitleInput = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -75,15 +85,28 @@ public class AdminPanel extends javax.swing.JFrame {
         deviceNameInput = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         officeIdInput = new javax.swing.JComboBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        specDeviceTextArea = new javax.swing.JTextArea();
         jLabel15 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         usersDataTable = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
+        jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        userDeactivateCombo = new javax.swing.JComboBox();
+        deactivateUserBtn = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        helpTaskCombo = new javax.swing.JComboBox();
+        jLabel29 = new javax.swing.JLabel();
+        assignTaskCombo = new javax.swing.JComboBox();
+        assignTaskBtn = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -94,6 +117,8 @@ public class AdminPanel extends javax.swing.JFrame {
         userNameInputServer = new javax.swing.JTextField();
         passwordServerInput = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jPanel15 = new javax.swing.JPanel();
+        jPanel16 = new javax.swing.JPanel();
         logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         aboutJOptionMenu = new javax.swing.JMenuBar();
@@ -161,7 +186,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jLabel9.setText("User Type:");
 
-        jLabel10.setText("Course:");
+        jLabel10.setText("Job Title:");
 
         createUserBtn.setText("Create User");
         createUserBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -174,9 +199,15 @@ public class AdminPanel extends javax.swing.JFrame {
 
         serviceTimeCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2013/2014", "2014/ 2015", "2015/2016", "2016/2017" }));
 
-        courseCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "BIT", "BCS", "BCE" }));
-
         sexCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
+
+        jLabel20.setText("Full Name:");
+
+        jLabel23.setText("Date of Birth:");
+
+        jLabel24.setText("Email:");
+
+        jLabel25.setText("Phone:");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -190,22 +221,30 @@ public class AdminPanel extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel20)
+                            .addComponent(jLabel23))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(userNameInput)
                             .addComponent(passInput)
-                            .addComponent(userTypeCombo, 0, 223, Short.MAX_VALUE))
+                            .addComponent(userTypeCombo, 0, 223, Short.MAX_VALUE)
+                            .addComponent(fullNameInput)
+                            .addComponent(dobInput))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(serviceTimeCombo, 0, 246, Short.MAX_VALUE)
-                            .addComponent(courseCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(sexCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(sexCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(emailInput)
+                            .addComponent(phoneInput)
+                            .addComponent(jobTitleInput))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
@@ -222,16 +261,29 @@ public class AdminPanel extends javax.swing.JFrame {
                     .addComponent(jLabel8)
                     .addComponent(jLabel10)
                     .addComponent(passInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(courseCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jobTitleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel7)
                     .addComponent(userTypeCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sexCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(fullNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24)
+                    .addComponent(emailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel23)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(dobInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel25)
+                        .addComponent(phoneInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addComponent(createUserBtn)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
@@ -250,7 +302,7 @@ public class AdminPanel extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(232, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +311,7 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         userTabbedMenu.addTab("Create Users", jPanel2);
@@ -347,6 +399,11 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jLabel16.setText("Office Name:");
 
+        specDeviceTextArea.setColumns(20);
+        specDeviceTextArea.setRows(5);
+        specDeviceTextArea.setToolTipText("Please Enter All Properties Separated With Commas");
+        jScrollPane2.setViewportView(specDeviceTextArea);
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -359,11 +416,12 @@ public class AdminPanel extends javax.swing.JFrame {
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel14)
                             .addComponent(jLabel16))
-                        .addGap(18, 18, 18)
+                        .addGap(69, 69, 69)
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(deviceNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                            .addComponent(deviceNameInput)
                             .addComponent(officeIdInput, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -372,7 +430,9 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(deviceNameInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(officeIdInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -385,31 +445,40 @@ public class AdminPanel extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 0, 51));
         jLabel15.setText("Create a New Device");
 
+        jLabel26.setText("Devices Specifications:");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(416, 416, 416)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(416, 416, 416)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(268, 268, 268)
+                        .addComponent(jLabel26)))
                 .addContainerGap(474, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(255, 255, 255)
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(252, Short.MAX_VALUE)))
+                    .addContainerGap(336, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(jLabel15)
-                .addContainerGap(357, Short.MAX_VALUE))
+                .addGap(126, 126, 126)
+                .addComponent(jLabel26)
+                .addContainerGap(217, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(104, 104, 104)
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(209, Short.MAX_VALUE)))
+                    .addContainerGap(92, Short.MAX_VALUE)))
         );
 
         userTabbedMenu.addTab("Register Devices", jPanel4);
@@ -419,7 +488,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No", "User Name", "User Type", "Sex", "Course", "Status", "Service Term"
+                "No", "User Name", "User Type", "Sex", "Job Title", "Status", "Service Term"
             }
         ));
         jScrollPane1.setViewportView(usersDataTable);
@@ -451,15 +520,43 @@ public class AdminPanel extends javax.swing.JFrame {
 
         userTabbedMenu.addTab("View Users", jPanel5);
 
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel30.setText("Select User To Deactivate");
+
+        jLabel31.setText("Select User:");
+
+        deactivateUserBtn.setText("Deactiviate User");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addGap(349, 349, 349))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(350, 350, 350)
+                .addComponent(jLabel31)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deactivateUserBtn)
+                    .addComponent(userDeactivateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel30)
+                .addGap(24, 24, 24)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(userDeactivateCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(deactivateUserBtn)
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         userTabbedMenu.addTab("Deactivate Users", jPanel6);
@@ -490,18 +587,56 @@ public class AdminPanel extends javax.swing.JFrame {
 
         userTabbedMenu.addTab("Show Offices", jPanel8);
 
+        jLabel27.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel27.setText("Assign Tasks");
+
+        jLabel28.setText("Help Desk User:");
+
+        jLabel29.setText("Assgn Task:");
+
+        assignTaskBtn.setText("Assign Task");
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel27)
+                .addGap(375, 375, 375))
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(365, 365, 365)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel28)
+                    .addComponent(jLabel29))
+                .addGap(32, 32, 32)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(helpTaskCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(assignTaskCombo, 0, 324, Short.MAX_VALUE))
+                    .addComponent(assignTaskBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel27)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(helpTaskCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(assignTaskCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(assignTaskBtn)
+                .addContainerGap(247, Short.MAX_VALUE))
         );
 
-        userTabbedMenu.addTab("Contact Help Desk User", jPanel9);
+        userTabbedMenu.addTab("Assign Tasks", jPanel9);
 
         jPanel14.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 0, 204), 3, true));
 
@@ -585,6 +720,32 @@ public class AdminPanel extends javax.swing.JFrame {
         );
 
         userTabbedMenu.addTab("Server Configuration", jPanel13);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1054, Short.MAX_VALUE)
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 449, Short.MAX_VALUE)
+        );
+
+        userTabbedMenu.addTab("Complaints", jPanel15);
+
+        javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
+        jPanel16.setLayout(jPanel16Layout);
+        jPanel16Layout.setHorizontalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1054, Short.MAX_VALUE)
+        );
+        jPanel16Layout.setVerticalGroup(
+            jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 449, Short.MAX_VALUE)
+        );
+
+        userTabbedMenu.addTab("Unsolved Issues", jPanel16);
 
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -701,9 +862,13 @@ public class AdminPanel extends javax.swing.JFrame {
         String sex=sexCombo.getSelectedItem().toString();
         String userType=userTypeCombo.getSelectedItem().toString();
         String serviceTime=serviceTimeCombo.getSelectedItem().toString();
-        String course=courseCombo.getSelectedItem().toString();
-        String [] details={userName,password,userType,sex,course,serviceTime};
-        String [] columns={"User_Name","Password","User_Type","Sex","Course","Service"};
+        String jobTitle=jobTitleInput.getText().toString();
+        String fullName=fullNameInput.getText().toString();
+        String dob=dobInput.getText().toString();
+        String email=emailInput.getText().toString();
+        String phone=phoneInput.getText().toString();
+        String [] details={userName,password,userType,sex,jobTitle,serviceTime,fullName,dob,email,phone};
+        String [] columns={"User_Name","Password","User_Type","Sex","Job_Title","Service","Full_Names","DOB","Email","Phone"};
         String tableName="users";
         saveDetails=new Functions();
 //        System.out.println("\n"+saveDetails.mergeString(columns, "User_Name,"));
@@ -711,6 +876,11 @@ public class AdminPanel extends javax.swing.JFrame {
          saveDetails.saveDetails(columns, details, tableName,"User_Name");
          userNameInput.setText("");
          passInput.setText("");
+         fullNameInput.setText("");
+         dobInput.setText("");
+         emailInput.setText("");
+         phoneInput.setText("");
+         jobTitleInput.setText("");
     }//GEN-LAST:event_createUserBtnActionPerformed
 
     private void addOfficeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOfficeBtnActionPerformed
@@ -735,13 +905,16 @@ public class AdminPanel extends javax.swing.JFrame {
     private void addDeviceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDeviceBtnActionPerformed
         // TODO add your handling code here:
         String recordOne=deviceNameInput.getText().toString();
+        String recordThree=specDeviceTextArea.getText().toString();
         int recordTwo=officeIdInput.getSelectedIndex();
         String column1="Device_Name";
         String column2="Office_Id";
+        String column3="Device_Properties";
         String tableName="devices";
         Functions saveDevice= new Functions();
-        saveDevice.saveTwoRecords(recordOne, (recordTwo+1), column1, column2, tableName);
+        saveDevice.saveThreeRecords(recordOne, (recordTwo+1),recordThree ,column1, column2,column3, tableName);
         deviceNameInput.setText("");
+        specDeviceTextArea.setText("");
     }//GEN-LAST:event_addDeviceBtnActionPerformed
 
     private void userTabbedMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTabbedMenuMouseClicked
@@ -759,7 +932,7 @@ public class AdminPanel extends javax.swing.JFrame {
                 String userType=rs.getString("User_Type");
                 String sex=rs.getString("Sex");
                 String status=rs.getString("Status");
-                String course=rs.getString("Course");
+                String course=rs.getString("Job_Title");
                 String service=rs.getString("Service");
                 usersModel.addRow(new Object[]{no,userName,userType,sex,status,course,service});
             }
@@ -812,6 +985,52 @@ public class AdminPanel extends javax.swing.JFrame {
 
     }
     }
+    private void fillUserCombo()
+    {
+        
+        try{
+                Connection conn=DataBaseConnection.getConnection();
+                
+                String sql = "Select User_Name from users where User_Type='HelpDesk'";
+                Statement stmt= conn.prepareStatement(sql);
+                rs= stmt.executeQuery(sql);
+
+                  while(rs.next())
+                  {
+                     String addname=rs.getString("User_Name");
+                     userDeactivateCombo.addItem(addname);
+                      //String ob=sexSelect.getSelectedItem();
+                    }
+                    
+        }
+           catch(Exception e){
+               System.out.println(e);
+
+    }
+    }
+    private void fillUserTaskCombo()
+    {
+        
+        try{
+                Connection conn=DataBaseConnection.getConnection();
+                
+                String sql = "Select User_Name from users where User_Type='HelpDesk'";
+                Statement stmt= conn.prepareStatement(sql);
+                rs= stmt.executeQuery(sql);
+
+                  while(rs.next())
+                  {
+                     String addname=rs.getString("User_Name");
+                     helpTaskCombo.addItem(addname);
+                      //String ob=sexSelect.getSelectedItem();
+                    }
+                    
+        }
+           catch(Exception e){
+               System.out.println(e);
+
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -853,9 +1072,15 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JMenuBar aboutJOptionMenu;
     private javax.swing.JButton addDeviceBtn;
     private javax.swing.JButton addOfficeBtn;
-    private javax.swing.JComboBox courseCombo;
+    private javax.swing.JButton assignTaskBtn;
+    private javax.swing.JComboBox assignTaskCombo;
     private javax.swing.JButton createUserBtn;
+    private javax.swing.JButton deactivateUserBtn;
     private javax.swing.JTextField deviceNameInput;
+    private javax.swing.JTextField dobInput;
+    private javax.swing.JTextField emailInput;
+    private javax.swing.JTextField fullNameInput;
+    private javax.swing.JComboBox helpTaskCombo;
     private javax.swing.JTextField iPAddressInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -869,9 +1094,19 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -885,6 +1120,8 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
+    private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -894,14 +1131,19 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jobTitleInput;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JComboBox officeIdInput;
     private javax.swing.JTextField officeNameInput;
     private javax.swing.JTextField passInput;
     private javax.swing.JTextField passwordServerInput;
+    private javax.swing.JTextField phoneInput;
     private javax.swing.JButton saveServerBtn;
     private javax.swing.JComboBox serviceTimeCombo;
     private javax.swing.JComboBox sexCombo;
+    private javax.swing.JTextArea specDeviceTextArea;
+    private javax.swing.JComboBox userDeactivateCombo;
     private javax.swing.JTextField userNameInput;
     private javax.swing.JTextField userNameInputServer;
     private javax.swing.JTabbedPane userTabbedMenu;
