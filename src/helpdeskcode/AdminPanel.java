@@ -32,6 +32,7 @@ public class AdminPanel extends javax.swing.JFrame {
         fillUserCombo();
         fillUserTaskCombo();
         fillCombo();
+        fillTaskCombo();
     }
 
     /**
@@ -98,8 +99,14 @@ public class AdminPanel extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         userDeactivateCombo = new javax.swing.JComboBox();
         deactivateUserBtn = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
+        devicePanel = new javax.swing.JPanel();
+        jLabel32 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        devicesJTable = new javax.swing.JTable();
         jPanel8 = new javax.swing.JPanel();
+        jLabel33 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        officesJTable = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -488,7 +495,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No", "User Name", "User Type", "Sex", "Job Title", "Status", "Service Term"
+                "No", "User Name", "User Type", "Sex", "Status", "Job Title", "Service Term"
             }
         ));
         jScrollPane1.setViewportView(usersDataTable);
@@ -500,13 +507,13 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(495, Short.MAX_VALUE)
                 .addComponent(jLabel17)
                 .addGap(477, 477, 477))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -526,7 +533,12 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jLabel31.setText("Select User:");
 
-        deactivateUserBtn.setText("Deactiviate User");
+        deactivateUserBtn.setText("Deactivate User");
+        deactivateUserBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deactivateUserBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -561,28 +573,91 @@ public class AdminPanel extends javax.swing.JFrame {
 
         userTabbedMenu.addTab("Deactivate Users", jPanel6);
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+        devicePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                devicePanelMouseClicked(evt);
+            }
+        });
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel32.setText("List Devices");
+
+        devicesJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No", "Device Name", "Device Properties"
+            }
+        ));
+        jScrollPane3.setViewportView(devicesJTable);
+        if (devicesJTable.getColumnModel().getColumnCount() > 0) {
+            devicesJTable.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        javax.swing.GroupLayout devicePanelLayout = new javax.swing.GroupLayout(devicePanel);
+        devicePanel.setLayout(devicePanelLayout);
+        devicePanelLayout.setHorizontalGroup(
+            devicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(devicePanelLayout.createSequentialGroup()
+                .addGroup(devicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(devicePanelLayout.createSequentialGroup()
+                        .addGap(436, 436, 436)
+                        .addComponent(jLabel32))
+                    .addGroup(devicePanelLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+        devicePanelLayout.setVerticalGroup(
+            devicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(devicePanelLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        userTabbedMenu.addTab("Show Devices", jPanel7);
+        userTabbedMenu.addTab("Show Devices", devicePanel);
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel33.setText("List Offices");
+
+        officesJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No", "Office Name"
+            }
+        ));
+        jScrollPane4.setViewportView(officesJTable);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(435, 435, 435)
+                        .addComponent(jLabel33))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(324, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 449, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel33)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         userTabbedMenu.addTab("Show Offices", jPanel8);
@@ -593,9 +668,14 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jLabel28.setText("Help Desk User:");
 
-        jLabel29.setText("Assgn Task:");
+        jLabel29.setText("Assign Task:");
 
         assignTaskBtn.setText("Assign Task");
+        assignTaskBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignTaskBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -919,6 +999,56 @@ public class AdminPanel extends javax.swing.JFrame {
 
     private void userTabbedMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTabbedMenuMouseClicked
         // TODO add your handling code here:
+        //display all users
+        listUsers();
+        
+        //display all devices
+        listDevices();
+        
+        //display all offices
+        listOffices();
+    }//GEN-LAST:event_userTabbedMenuMouseClicked
+
+    private void saveServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveServerBtnActionPerformed
+        // TODO add your handling code here:
+        String ipAddress=iPAddressInput.getText().toString();
+        String pass=passwordServerInput.getText().toString();
+        String userServerName=userNameInputServer.getText().toString();
+        String [] serverDetails={ipAddress,pass,userServerName};
+        String tableName="server";
+        String firstColumn="Host_Ip";
+        String [] columnServerNames={"Host_Ip","Password","Db_Name"};
+        Functions serverInserter=new Functions();
+        serverInserter.saveDetails(columnServerNames, serverDetails, tableName, firstColumn);
+        iPAddressInput.setText("");
+        passwordServerInput.setText("");
+        userNameInputServer.setText("");
+    }//GEN-LAST:event_saveServerBtnActionPerformed
+
+    private void assignTaskBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignTaskBtnActionPerformed
+        // TODO add your handling code here:
+        String ticketTitle=assignTaskCombo.getSelectedItem().toString();
+        String userName=(helpTaskCombo.getSelectedItem().toString());
+        Functions saveTask=new Functions();
+        saveTask.saveTwo(ticketTitle, userName, "Ticket_Title", "User_Id", "tasks","Task Has Been Assigned Successfully To: "+userName);
+    }//GEN-LAST:event_assignTaskBtnActionPerformed
+
+    private void deactivateUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deactivateUserBtnActionPerformed
+        // TODO add your handling code here:
+        String userName=userDeactivateCombo.getSelectedItem().toString();
+        String sql="update users set Status='Deactivated' where User_Name='"+userName+"';";
+        Functions deactivateUsers=new Functions();
+        deactivateUsers.updateTable(sql, "User Has Been Deactivated");
+    }//GEN-LAST:event_deactivateUserBtnActionPerformed
+
+    private void devicePanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_devicePanelMouseClicked
+        // TODO add your handling code here:
+     
+        
+    }//GEN-LAST:event_devicePanelMouseClicked
+// list all users
+    public void listUsers()
+    {
         Functions viewUsers =new Functions();
         String userSql="select * from users";
         DefaultTableModel usersModel=(DefaultTableModel) usersDataTable.getModel();
@@ -942,24 +1072,81 @@ public class AdminPanel extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_userTabbedMenuMouseClicked
+    }
 
-    private void saveServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveServerBtnActionPerformed
-        // TODO add your handling code here:
-        String ipAddress=iPAddressInput.getText().toString();
-        String pass=passwordServerInput.getText().toString();
-        String userServerName=userNameInputServer.getText().toString();
-        String [] serverDetails={ipAddress,pass,userServerName};
-        String tableName="server";
-        String firstColumn="Host_Ip";
-        String [] columnServerNames={"Host_Ip","Password","Db_Name"};
-        Functions serverInserter=new Functions();
-        serverInserter.saveDetails(columnServerNames, serverDetails, tableName, firstColumn);
-        iPAddressInput.setText("");
-        passwordServerInput.setText("");
-        userNameInputServer.setText("");
-    }//GEN-LAST:event_saveServerBtnActionPerformed
- /*
+
+//list all devices
+    public void listDevices()
+    {
+        Functions listDevices =new Functions();
+        String userSql="select * from devices";
+        DefaultTableModel deviceModel=(DefaultTableModel) devicesJTable.getModel();
+        
+        try {
+            ResultSet rs=listDevices.showRecords(userSql);
+            while(rs.next())
+            {
+                String no=rs.getString("Device_Id");
+                String deviceName=rs.getString("Device_Name");
+                String deviceProperties=rs.getString("Device_Properties");
+                deviceModel.addRow(new Object[]{no,deviceName,deviceProperties});
+            }
+            //usersModel.fireTableDataChanged();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    //list all offices...
+    
+    public void listOffices()
+    {
+        Functions listOffices =new Functions();
+        String userSql="select * from offices";
+        DefaultTableModel officesModel=(DefaultTableModel) officesJTable.getModel();
+        
+        try {
+            ResultSet rs=listOffices.showRecords(userSql);
+            while(rs.next())
+            {
+                String no=rs.getString("Office_Id");
+                String officeName=rs.getString("Office_Name");
+                officesModel.addRow(new Object[]{no,officeName});
+            }
+            //usersModel.fireTableDataChanged();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void listTickets()
+    {
+        Functions listTickets =new Functions();
+        String userSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name from tickets t,devices d where d.Device_Id=t.Device_Id";
+        DefaultTableModel officesModel=(DefaultTableModel) officesJTable.getModel();
+        
+        try {
+            ResultSet rs=listTickets.showRecords(userSql);
+            while(rs.next())
+            {
+                String no=rs.getString("Office_Id");
+                String officeName=rs.getString("Office_Name");
+                officesModel.addRow(new Object[]{no,officeName});
+            }
+            //usersModel.fireTableDataChanged();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    /*
     *this method is used to 
     */
     private void fillCombo()
@@ -1031,6 +1218,29 @@ public class AdminPanel extends javax.swing.JFrame {
 
     }
     }
+     private void fillTaskCombo()
+    {
+        
+        try{
+                Connection conn=DataBaseConnection.getConnection();
+                
+                String sql = "Select Ticket_Title from tickets where Status='0'";
+                Statement stmt= conn.prepareStatement(sql);
+                rs= stmt.executeQuery(sql);
+
+                  while(rs.next())
+                  {
+                     String addname=rs.getString("Ticket_Title");
+                     assignTaskCombo.addItem(addname);
+                      //String ob=sexSelect.getSelectedItem();
+                    }
+                    
+        }
+           catch(Exception e){
+               System.out.println(e);
+
+    }
+    }
     /**
      * @param args the command line arguments
      */
@@ -1077,6 +1287,8 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JButton createUserBtn;
     private javax.swing.JButton deactivateUserBtn;
     private javax.swing.JTextField deviceNameInput;
+    private javax.swing.JPanel devicePanel;
+    private javax.swing.JTable devicesJTable;
     private javax.swing.JTextField dobInput;
     private javax.swing.JTextField emailInput;
     private javax.swing.JTextField fullNameInput;
@@ -1107,6 +1319,8 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1127,15 +1341,17 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jobTitleInput;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JComboBox officeIdInput;
     private javax.swing.JTextField officeNameInput;
+    private javax.swing.JTable officesJTable;
     private javax.swing.JTextField passInput;
     private javax.swing.JTextField passwordServerInput;
     private javax.swing.JTextField phoneInput;

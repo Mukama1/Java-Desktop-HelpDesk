@@ -163,7 +163,7 @@ public class Functions {
         try
         {
             String userType="";
-                String query = "SELECT * FROM users WHERE User_Name='"+loginId+"' AND Password = '"+Password+"'";
+                String query = "SELECT * FROM users WHERE User_Name='"+loginId+"' AND Password = '"+Password+"' AND Status='Active'";
                 conn = DataBaseConnection.getConnection();
                 stmt = conn.prepareStatement(query);
                 ResultSet res = stmt.executeQuery();
@@ -179,6 +179,8 @@ public class Functions {
             return userType;
         }
     }
+    
+    
     
     //function for centering the JFrame
     public static void center(JFrame frame) {
@@ -207,5 +209,35 @@ public class Functions {
         frame.setLocation(x, y);
 
     }
-
+   
+    public void updateTable(String sql,String message)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            stmt=conn.prepareStatement(sql);
+            stmt.execute();
+            dialogBuilder(message);
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void saveTwo(String recordOne,String recordTwo,String columnName1,String columnName2,String tableName,String message)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            String sql="insert into "+tableName+" (" +columnName1+","+ columnName2+ ") values (?,?)";
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, recordOne );
+            stmt.setString(2, recordTwo);
+            stmt.execute();
+            dialogBuilder(message);
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

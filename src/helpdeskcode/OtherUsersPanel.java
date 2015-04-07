@@ -5,6 +5,10 @@
  */
 package helpdeskcode;
 
+import helpers.Functions;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,12 +16,18 @@ import javax.swing.JOptionPane;
  * @author Mukama
  */
 public class OtherUsersPanel extends javax.swing.JFrame {
-
+    ResultSet rs;
+    Functions save=null;
+    int theUserId;
+    
+    
     /**
      * Creates new form OtherUsersPanel
      */
     public OtherUsersPanel() {
+       
         initComponents();
+        fillTicketCombo();
     }
 
     /**
@@ -35,6 +45,17 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        ticketSubject = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ticketTxtArea = new javax.swing.JTextArea();
+        ticketCombo = new javax.swing.JComboBox();
+        sendTicketBtn = new javax.swing.JButton();
+        priorityCombo = new javax.swing.JComboBox();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -86,15 +107,86 @@ public class OtherUsersPanel extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Welcome", jPanel1);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel5.setText("Submit a Ticket");
+
+        jLabel6.setText("Subject:");
+
+        jLabel7.setText("Ticket Details:");
+
+        jLabel8.setText("Select Device:");
+
+        ticketTxtArea.setColumns(20);
+        ticketTxtArea.setRows(5);
+        jScrollPane1.setViewportView(ticketTxtArea);
+
+        sendTicketBtn.setText("Send Ticket");
+        sendTicketBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendTicketBtnActionPerformed(evt);
+            }
+        });
+
+        priorityCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Low", "Moderate", "High" }));
+
+        jLabel9.setText("Priority Level");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1115, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(439, 439, 439)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(295, 295, 295)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel6)))
+                                .addGap(70, 70, 70)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(priorityCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(ticketSubject)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                                    .addComponent(ticketCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(sendTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 340, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(ticketSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel7))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(ticketCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(priorityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(sendTicketBtn)
+                .addGap(24, 24, 24))
         );
 
         jTabbedPane1.addTab("Submit An Issue", jPanel2);
@@ -159,16 +251,15 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(217, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(178, 178, 178)
                 .addComponent(logoutOfficialBtn)
                 .addGap(20, 20, 20))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jTabbedPane1)
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,12 +268,9 @@ public class OtherUsersPanel extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(logoutOfficialBtn))
-                .addContainerGap(396, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(57, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap()))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,6 +288,25 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this,"System was Designed by the IT Team 2014/2015 as the final year project\n Thanks Our Then Supervisor Mr.Ntwari Richard");
     }//GEN-LAST:event_officialUserJMenuMouseClicked
+
+    private void sendTicketBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendTicketBtnActionPerformed
+        // TODO add your handling code here:
+        String ticketSub=ticketSubject.getText().toString();
+        String details=ticketTxtArea.getText().toString();
+        String tickCombo=""+(ticketCombo.getSelectedIndex()+1);
+        String priorityLevel=priorityCombo.getSelectedItem().toString();
+        String ticketDetails[]={ticketSub,details,tickCombo,priorityLevel,"1"};
+        String tableFields[]={"Ticket_Title","Ticket_Details","Device_Id","Priority_Level","User_Id"};
+        String tableName="tickets";
+        save=new Functions();
+        Main getUsersId=new Main();
+        theUserId =getUsersId.getUserId();
+        JOptionPane.showMessageDialog(null, "This is the userId: "+ theUserId);
+        save.saveDetails(tableFields, ticketDetails, tableName, "Ticket_Title");
+        ticketSubject.setText("");
+        ticketTxtArea.setText("");
+       
+    }//GEN-LAST:event_sendTicketBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,20 +334,50 @@ public class OtherUsersPanel extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(OtherUsersPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+               
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new OtherUsersPanel().setVisible(true);
             }
         });
+        
     }
 
+    private void fillTicketCombo()
+    {
+        
+        try{
+                Connection conn=DataBaseConnection.getConnection();
+                
+                String sql = "Select Device_Name from devices";
+                Statement stmt= conn.prepareStatement(sql);
+                rs= stmt.executeQuery(sql);
+
+                  while(rs.next())
+                  {
+                     String addname=rs.getString("Device_Name");
+                     ticketCombo.addItem(addname);
+                      //String ob=sexSelect.getSelectedItem();
+                    }
+                    
+        }
+           catch(Exception e){
+               System.out.println(e);
+
+    }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -248,8 +385,14 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton logoutOfficialBtn;
     private javax.swing.JMenuItem officialUserJMenu;
+    private javax.swing.JComboBox priorityCombo;
+    private javax.swing.JButton sendTicketBtn;
+    private javax.swing.JComboBox ticketCombo;
+    private javax.swing.JTextField ticketSubject;
+    private javax.swing.JTextArea ticketTxtArea;
     // End of variables declaration//GEN-END:variables
 }

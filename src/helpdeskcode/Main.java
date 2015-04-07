@@ -6,6 +6,7 @@
 package helpdeskcode;
 
 import helpers.Functions;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,13 +15,26 @@ import javax.swing.JOptionPane;
  */
 public class Main extends javax.swing.JFrame {
         Functions authUser;
+        private int userId;
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
-        
+        this.userId=userId;
     }
+//    public Main(int userId)
+//    {
+//        this.userId=userId;
+//    }
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,8 +50,8 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         userNameAuthInput = new javax.swing.JTextField();
-        passwordAuthInput = new javax.swing.JTextField();
         loginAuthBtn = new javax.swing.JButton();
+        passwordAuthInputa = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MUST Help Desk");
@@ -73,11 +87,10 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(40, 40, 40)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(userNameAuthInput)
-                        .addComponent(passwordAuthInput, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE))
-                    .addComponent(loginAuthBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(userNameAuthInput, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
+                    .addComponent(loginAuthBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordAuthInputa))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -90,7 +103,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(passwordAuthInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordAuthInputa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(loginAuthBtn)
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -128,8 +141,22 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         authUser=new Functions();
         String authUserName=userNameAuthInput.getText().toString();
-        String authPassword=passwordAuthInput.getText().toString();
+        String authPassword=passwordAuthInputa.getText().toString();
         String returnAuth=authUser.Authentication(authUserName, authPassword);
+        String query = "SELECT * FROM users WHERE User_Name='"+authUserName+"' AND Password = '"+authPassword+"'";
+        try{
+        ResultSet rs=authUser.showRecords(query);
+        if(rs.next())
+        {
+            String usersId=rs.getString("User_Id").toString();
+            userId=Integer.parseInt(usersId);
+            
+        }
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+                  
+        }
         if(returnAuth.equals("Admin"))
         {
             AdminPanel startAdmin=new AdminPanel();
@@ -145,13 +172,15 @@ public class Main extends javax.swing.JFrame {
         else if(returnAuth.equals("OfficialUser"))
         {
             OtherUsersPanel startOfficialUser=new OtherUsersPanel();
+            JOptionPane.showMessageDialog(null, "The id is: "+getUserId());
+            int newUserId=getUserId();
             startOfficialUser.show();
             this.setVisible(false);
         }
         else{
             JOptionPane.showMessageDialog(null, "Please Try Again");
             userNameAuthInput.setText("");
-            passwordAuthInput.setText("");
+            passwordAuthInputa.setText("");
         }
     }//GEN-LAST:event_loginAuthBtnActionPerformed
 
@@ -181,7 +210,7 @@ public class Main extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -199,7 +228,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginAuthBtn;
-    private javax.swing.JTextField passwordAuthInput;
+    private javax.swing.JPasswordField passwordAuthInputa;
     private javax.swing.JTextField userNameAuthInput;
     // End of variables declaration//GEN-END:variables
 }
