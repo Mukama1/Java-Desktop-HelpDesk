@@ -240,4 +240,41 @@ public class Functions {
             e.printStackTrace();
         }
     }
+    
+    
+    public void sendMessage(String recordOne,String recordTwo,String recordThree,String columnName1,String columnName2,String columnName3,String tableName,String subMessage)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            String sql="insert into "+tableName+" (" +columnName1+","+ columnName2+ ","+columnName3+") values (?,?,?)";
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, recordOne );
+            stmt.setString(2, recordTwo);
+            stmt.setString(3,recordThree);
+            stmt.execute();
+            dialogBuilder(subMessage);
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void saveThree(String recordOne,String recordTwo,String recordThree,String columnName1,String columnName2,String columnName3,String tableName,String message)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            String sql="insert into "+tableName+" (" +columnName1+","+ columnName2+ ","+columnName3+") values (?,?,?)";
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, recordOne );
+            stmt.setString(2, recordTwo);
+            stmt.setString(3,recordThree);
+            stmt.execute();
+            dialogBuilder(message);
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }
