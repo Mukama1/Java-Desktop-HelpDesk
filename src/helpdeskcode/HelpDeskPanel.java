@@ -131,7 +131,7 @@ String usernameResolvedTxt;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(356, 356, 356)
                         .addComponent(jLabel14)))
-                .addContainerGap(307, Short.MAX_VALUE))
+                .addContainerGap(339, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +211,7 @@ String usernameResolvedTxt;
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)))))
                 .addGap(18, 18, 18)
                 .addComponent(confirmResolvedBtn)
-                .addContainerGap(275, Short.MAX_VALUE))
+                .addContainerGap(307, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,7 +303,7 @@ String usernameResolvedTxt;
                                     .addComponent(statusUnConfirmedCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jScrollPane3)))
                             .addComponent(cUnResolvedBtn, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(329, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -376,7 +376,7 @@ String usernameResolvedTxt;
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 951, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -421,7 +421,7 @@ String usernameResolvedTxt;
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,7 +465,7 @@ String usernameResolvedTxt;
                 .addComponent(jLabel18)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(365, Short.MAX_VALUE)
+                .addContainerGap(397, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(sendMessageBtn)
                     .addComponent(jLabel19)
@@ -510,7 +510,7 @@ String usernameResolvedTxt;
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(331, 331, 331)
                 .addComponent(jLabel22)
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addContainerGap(478, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -563,8 +563,9 @@ String usernameResolvedTxt;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(141, 141, 141)
-                .addComponent(logoutHdUserBtn))
+                .addGap(108, 108, 108)
+                .addComponent(logoutHdUserBtn)
+                .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane1)
@@ -575,11 +576,11 @@ String usernameResolvedTxt;
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(logoutHdUserBtn))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(logoutHdUserBtn)))
                 .addGap(18, 18, 18)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
@@ -673,8 +674,6 @@ String usernameResolvedTxt;
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
         //listing all case lists
-        DefaultTableModel kbModel=(DefaultTableModel) knowledgeBaseHdUserJTable.getModel();
-        kbModel.setRowCount(0);
         listKnowledgeBase();
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
@@ -760,7 +759,7 @@ String usernameResolvedTxt;
         Functions listKB =new Functions();
         String kbSql="select * from knowledge_base";
         DefaultTableModel kbModel=(DefaultTableModel) knowledgeBaseHdUserJTable.getModel();
-        
+        kbModel.setRowCount(0);
         try {
             ResultSet rs=listKB.showRecords(kbSql);
             while(rs.next())

@@ -129,6 +129,9 @@ public class AdminPanel extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         ticketJTable = new javax.swing.JTable();
         jPanel16 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        unSolveTicketJTable = new javax.swing.JTable();
+        jLabel38 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
@@ -138,6 +141,9 @@ public class AdminPanel extends javax.swing.JFrame {
         knowledgeTxtArea = new javax.swing.JTextArea();
         saveKnowlegeBtn = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        messagesJTable = new javax.swing.JTable();
+        jLabel39 = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         aboutJOptionMenu = new javax.swing.JMenuBar();
@@ -854,15 +860,42 @@ public class AdminPanel extends javax.swing.JFrame {
 
         userTabbedMenu.addTab("Complaints", jPanel15);
 
+        unSolveTicketJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Ticket Title", "Ticket Details", "Status", "Submission Date", "Priority", "Device Name", "Additional Information"
+            }
+        ));
+        jScrollPane7.setViewportView(unSolveTicketJTable);
+
+        jLabel38.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel38.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel38.setText("UnSolved Issues");
+
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
         jPanel16.setLayout(jPanel16Layout);
         jPanel16Layout.setHorizontalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGroup(jPanel16Layout.createSequentialGroup()
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGap(406, 406, 406)
+                        .addComponent(jLabel38))
+                    .addGroup(jPanel16Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 1001, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel16Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel38)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         userTabbedMenu.addTab("Unsolved Issues", jPanel16);
@@ -924,15 +957,42 @@ public class AdminPanel extends javax.swing.JFrame {
 
         userTabbedMenu.addTab("Knowledge Base", jPanel7);
 
+        messagesJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No", "Title", "Details", "Sender"
+            }
+        ));
+        jScrollPane8.setViewportView(messagesJTable);
+
+        jLabel39.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel39.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel39.setText("List All Messages");
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1054, Short.MAX_VALUE)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGap(408, 408, 408)
+                        .addComponent(jLabel39))
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 975, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         userTabbedMenu.addTab("Messages", jPanel17);
@@ -1120,6 +1180,12 @@ public class AdminPanel extends javax.swing.JFrame {
         
         //display all tickets
         listTickets();
+        
+        //list unsolved tickets for the admin
+        listUnSolvedTickets();
+        
+        //listing all the messages that have been sent
+        listMessages();
     }//GEN-LAST:event_userTabbedMenuMouseClicked
 
     private void saveServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveServerBtnActionPerformed
@@ -1175,7 +1241,7 @@ public class AdminPanel extends javax.swing.JFrame {
         Functions viewUsers =new Functions();
         String userSql="select * from users";
         DefaultTableModel usersModel=(DefaultTableModel) usersDataTable.getModel();
-        
+        usersModel.setRowCount(0);
         try {
             ResultSet rs=viewUsers.showRecords(userSql);
             while(rs.next())
@@ -1204,7 +1270,7 @@ public class AdminPanel extends javax.swing.JFrame {
         Functions listDevices =new Functions();
         String userSql="select * from devices";
         DefaultTableModel deviceModel=(DefaultTableModel) devicesJTable.getModel();
-        
+        deviceModel.setRowCount(0);
         try {
             ResultSet rs=listDevices.showRecords(userSql);
             while(rs.next())
@@ -1230,7 +1296,7 @@ public class AdminPanel extends javax.swing.JFrame {
         Functions listOffices =new Functions();
         String userSql="select * from offices";
         DefaultTableModel officesModel=(DefaultTableModel) officesJTable.getModel();
-        
+        officesModel.setRowCount(0);
         try {
             ResultSet rs=listOffices.showRecords(userSql);
             while(rs.next())
@@ -1252,7 +1318,7 @@ public class AdminPanel extends javax.swing.JFrame {
         Functions listTickets =new Functions();
         String ticketsSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name from tickets t,devices d where d.Device_Id=t.Device_Id";
         DefaultTableModel ticketModel=(DefaultTableModel) ticketJTable.getModel();
-        
+        ticketModel.setRowCount(0);
         try {
             ResultSet rs=listTickets.showRecords(ticketsSql);
             while(rs.next())
@@ -1264,6 +1330,58 @@ public class AdminPanel extends javax.swing.JFrame {
                 String date=rs.getString("Date");
                 String deviceName=rs.getString("Device_Name");
                 ticketModel.addRow(new Object[]{no,ticketDetails,status,date,priorityLevel,deviceName});
+            }
+            //usersModel.fireTableDataChanged();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //list all messages
+    public void listMessages()
+    {
+        Functions listMessages =new Functions();
+        String messagesSql="select * from messages";
+        DefaultTableModel messagesModel=(DefaultTableModel) messagesJTable.getModel();
+        messagesModel.setRowCount(0);
+        try {
+            ResultSet rs=listMessages.showRecords(messagesSql);
+            while(rs.next())
+            {
+                String no=rs.getString("message_id");
+                String title=rs.getString("message_title");
+                String body=rs.getString("message_body");
+                String sender=rs.getString("message_sender");
+                messagesModel.addRow(new Object[]{no,title,body,sender});
+            }
+            //usersModel.fireTableDataChanged();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void listUnSolvedTickets()
+    {
+        Functions listTickets =new Functions();
+        String ticketsSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name,t.Additional_Info from tickets t,devices d where d.Device_Id=t.Device_Id and t.Status='Not Fixed'";
+        DefaultTableModel ticketModel=(DefaultTableModel) unSolveTicketJTable.getModel();
+        ticketModel.setRowCount(0);
+        try {
+            ResultSet rs=listTickets.showRecords(ticketsSql);
+            while(rs.next())
+            {
+                String no=rs.getString("Ticket_Title");
+                String ticketDetails=rs.getString("Ticket_Details");
+                String status=rs.getString("Status");
+                String priorityLevel=rs.getString("Priority_Level");
+                String date=rs.getString("Date");
+                String deviceName=rs.getString("Device_Name");
+                String additionalInfo=rs.getString("Additional_Info");
+                ticketModel.addRow(new Object[]{no,ticketDetails,status,date,priorityLevel,deviceName,additionalInfo});
             }
             //usersModel.fireTableDataChanged();
         } catch (ClassNotFoundException ex) {
@@ -1452,6 +1570,8 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1482,10 +1602,13 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextField jobTitleInput;
     private javax.swing.JTextField knowledgeTxt;
     private javax.swing.JTextArea knowledgeTxtArea;
     private javax.swing.JButton logoutBtn;
+    private javax.swing.JTable messagesJTable;
     private javax.swing.JComboBox officeIdInput;
     private javax.swing.JTextField officeNameInput;
     private javax.swing.JTable officesJTable;
@@ -1498,6 +1621,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JComboBox sexCombo;
     private javax.swing.JTextArea specDeviceTextArea;
     private javax.swing.JTable ticketJTable;
+    private javax.swing.JTable unSolveTicketJTable;
     private javax.swing.JComboBox userDeactivateCombo;
     private javax.swing.JTextField userNameInput;
     private javax.swing.JTextField userNameInputServer;
