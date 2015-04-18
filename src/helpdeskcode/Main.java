@@ -139,45 +139,50 @@ public class Main extends javax.swing.JFrame {
         authUser=new Functions();
         String authUserName=userNameAuthInput.getText().toString();
         String authPassword=passwordAuthInputa.getText().toString();
-        String returnAuth=authUser.Authentication(authUserName, authPassword);
-        String query = "SELECT * FROM users WHERE User_Name='"+authUserName+"' AND Password = '"+authPassword+"'";
-        try{
-        ResultSet rs=authUser.showRecords(query);
-        if(rs.next())
+        if(!authPassword.isEmpty() && !authUserName.isEmpty())
         {
-            String usersId=rs.getString("User_Id").toString();
-            userId=Integer.parseInt(usersId);
-            
-        }
-        }catch (Exception e)
-        {
-            e.printStackTrace();
-                  
-        }
-        if(returnAuth.equals("Admin"))
-        {
-            AdminPanel startAdmin=new AdminPanel();
-            startAdmin.show();
-            this.setVisible(false);
-        }
-        else if(returnAuth.equals("HelpDesk"))
-        {
-            HelpDeskPanel startHdUser=new HelpDeskPanel();
-            startHdUser.show();
-            this.setVisible(false);
-        }
-        else if(returnAuth.equals("OfficialUser"))
-        {
-            OtherUsersPanel startOfficialUser=new OtherUsersPanel();
-            JOptionPane.showMessageDialog(null, "The id is: "+getUserId());
-            int newUserId=getUserId();
-            startOfficialUser.show();
-            this.setVisible(false);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Please Try Again");
-            userNameAuthInput.setText("");
-            passwordAuthInputa.setText("");
+            String returnAuth=authUser.Authentication(authUserName, authPassword);
+            String query = "SELECT * FROM users WHERE User_Name='"+authUserName+"' AND Password = '"+authPassword+"'";
+            try{
+            ResultSet rs=authUser.showRecords(query);
+            if(rs.next())
+            {
+                String usersId=rs.getString("User_Id").toString();
+                userId=Integer.parseInt(usersId);
+
+            }
+            }catch (Exception e)
+            {
+                e.printStackTrace();
+
+            }
+            if(returnAuth.equals("Admin"))
+            {
+                AdminPanel startAdmin=new AdminPanel();
+                startAdmin.show();
+                this.setVisible(false);
+            }
+            else if(returnAuth.equals("HelpDesk"))
+            {
+                HelpDeskPanel startHdUser=new HelpDeskPanel();
+                startHdUser.show();
+                this.setVisible(false);
+            }
+            else if(returnAuth.equals("OfficialUser"))
+            {
+                OtherUsersPanel startOfficialUser=new OtherUsersPanel();
+                JOptionPane.showMessageDialog(null, "The id is: "+getUserId());
+                int newUserId=getUserId();
+                startOfficialUser.show();
+                this.setVisible(false);
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "User Name or Password Not Processed\nPlease Try Again");
+                userNameAuthInput.setText("");
+                passwordAuthInputa.setText("");
+            }
+        }else{
+           JOptionPane.showMessageDialog(null, "Fill in all fields");
         }
     }//GEN-LAST:event_loginAuthBtnActionPerformed
 

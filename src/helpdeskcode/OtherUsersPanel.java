@@ -63,6 +63,8 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         userNameCombo = new javax.swing.JComboBox();
         jLabel13 = new javax.swing.JLabel();
+        clientContact = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -89,7 +91,6 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         officialUserJMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1069, 556));
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -163,6 +164,8 @@ public class OtherUsersPanel extends javax.swing.JFrame {
 
         jLabel13.setText("User Name:");
 
+        jLabel16.setText("Phone Number:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -173,25 +176,27 @@ public class OtherUsersPanel extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(144, 144, 144)
                         .addComponent(jLabel5))
-                    .addComponent(jLabel9)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel8)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel6)))
-                            .addComponent(jLabel13))
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel16))
                         .addGap(70, 70, 70)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(priorityCombo, 0, 357, Short.MAX_VALUE)
                             .addComponent(sendTicketBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(userNameCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(priorityCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(ticketSubject)
-                                .addComponent(jScrollPane1)
-                                .addComponent(ticketCombo, 0, 357, Short.MAX_VALUE)))))
-                .addContainerGap(298, Short.MAX_VALUE))
+                            .addComponent(userNameCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ticketSubject)
+                            .addComponent(jScrollPane1)
+                            .addComponent(ticketCombo, 0, 357, Short.MAX_VALUE)
+                            .addComponent(clientContact))))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,23 +211,27 @@ public class OtherUsersPanel extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addComponent(jLabel7))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(ticketCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ticketCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(priorityCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addGap(18, 18, 18)
+                .addGap(16, 16, 16)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(clientContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sendTicketBtn)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Submit An Issue", jPanel2);
@@ -469,16 +478,25 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         String tickCombo=""+(ticketCombo.getSelectedIndex()+1);
         String priorityLevel=priorityCombo.getSelectedItem().toString();
         String userName=userNameCombo.getSelectedItem().toString();
-        String ticketDetails[]={ticketSub,details,tickCombo,priorityLevel,"1",userName};
-        String tableFields[]={"Ticket_Title","Ticket_Details","Device_Id","Priority_Level","User_Id","Submitted_By"};
-        String tableName="tickets";
-        save=new Functions();
-        Main getUsersId=new Main();
-        theUserId =getUsersId.getUserId();
-        //JOptionPane.showMessageDialog(null, "This is the userId: "+ theUserId);
-        save.saveDetails(tableFields, ticketDetails, tableName, "Ticket_Title");
-        ticketSubject.setText("");
-        ticketTxtArea.setText("");
+        String contact=clientContact.getText().toString();
+        if(!tickCombo.isEmpty() && !ticketSub.isEmpty() && !details.isEmpty() && !contact.isEmpty())
+        {
+            String ticketDetails[]={ticketSub,details,tickCombo,priorityLevel,"1",userName,contact};
+            String tableFields[]={"Ticket_Title","Ticket_Details","Device_Id","Priority_Level","User_Id","Submitted_By","Contact"};
+            String tableName="tickets";
+            save=new Functions();
+            Main getUsersId=new Main();
+            theUserId =getUsersId.getUserId();
+            //JOptionPane.showMessageDialog(null, "This is the userId: "+ theUserId);
+
+            save.saveDetails(tableFields, ticketDetails, tableName, "Ticket_Title");
+            ticketSubject.setText("");
+            ticketTxtArea.setText("");
+            clientContact.setText(""); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill in all fields");
+        }
+        
        
     }//GEN-LAST:event_sendTicketBtnActionPerformed
 
@@ -491,7 +509,12 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     private void previewIssuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previewIssuesBtnActionPerformed
         // TODO add your handling code here:
        String userName=userNameSearch.getText().toString();
-        listResolvedTickets(userName);
+       if(!userName.isEmpty()){
+          listResolvedTickets(userName); 
+       }else{
+           JOptionPane.showMessageDialog(null, "Enter User Name to Proceed");
+       }
+        
         userNameSearch.setText("");
         
     }//GEN-LAST:event_previewIssuesBtnActionPerformed
@@ -499,7 +522,12 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     private void allIssuesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allIssuesBtnActionPerformed
         // TODO add your handling code here:
         String userName=userSearchIssues.getText().toString();
-        listAllTickets(userName);
+        if(!userName.isEmpty()){
+          listAllTickets(userName);  
+        }else{
+            JOptionPane.showMessageDialog(null, "Enter User Name to Proceed");
+        }
+        
         userSearchIssues.setText("");
     }//GEN-LAST:event_allIssuesBtnActionPerformed
 //fill the knowledgebase
@@ -668,6 +696,7 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable allCasesJTable;
     private javax.swing.JButton allIssuesBtn;
+    private javax.swing.JTextField clientContact;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -675,6 +704,7 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

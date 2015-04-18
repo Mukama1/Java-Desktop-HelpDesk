@@ -1117,7 +1117,8 @@ public class AdminPanel extends javax.swing.JFrame {
         String dob=dobInput.getText().toString();
         String email=emailInput.getText().toString();
         String phone=phoneInput.getText().toString();
-        String [] details={userName,password,userType,sex,jobTitle,serviceTime,fullName,dob,email,phone};
+        if(!userName.isEmpty() && !password.isEmpty() && !jobTitle.isEmpty() && !fullName.isEmpty() && !dob.isEmpty() && !email.isEmpty() && !email.isEmpty()){
+          String [] details={userName,password,userType,sex,jobTitle,serviceTime,fullName,dob,email,phone};
         String [] columns={"User_Name","Password","User_Type","Sex","Job_Title","Service","Full_Names","DOB","Email","Phone"};
         String tableName="users";
         saveDetails=new Functions();
@@ -1130,17 +1131,28 @@ public class AdminPanel extends javax.swing.JFrame {
          dobInput.setText("");
          emailInput.setText("");
          phoneInput.setText("");
-         jobTitleInput.setText("");
+         jobTitleInput.setText("");  
+        }else{
+           JOptionPane.showMessageDialog(null, "Please fill all fields and create user");
+                   
+        }
+        
     }//GEN-LAST:event_createUserBtnActionPerformed
 
     private void addOfficeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addOfficeBtnActionPerformed
         // TODO add your handling code here
         String officeName=officeNameInput.getText().toString();
-        String detail=officeName;
-        String column="Office_Name";
-        String tableName="offices"; 
-        Functions saveOffice=new Functions();
-        saveOffice.saveSingleRecord(detail, column, tableName);
+        if(!officeName.isEmpty())
+        {
+            String detail=officeName;
+            String column="Office_Name";
+            String tableName="offices"; 
+            Functions saveOffice=new Functions();
+            saveOffice.saveSingleRecord(detail, column, tableName);
+        }else{
+            JOptionPane.showMessageDialog(null, "Enter office and save to create office");
+        }
+        
         officeNameInput.setText("");
     }//GEN-LAST:event_addOfficeBtnActionPerformed
 
@@ -1157,14 +1169,19 @@ public class AdminPanel extends javax.swing.JFrame {
         String recordOne=deviceNameInput.getText().toString();
         String recordThree=specDeviceTextArea.getText().toString();
         int recordTwo=officeIdInput.getSelectedIndex();
-        String column1="Device_Name";
-        String column2="Office_Id";
-        String column3="Device_Properties";
-        String tableName="devices";
-        Functions saveDevice= new Functions();
-        saveDevice.saveThreeRecords(recordOne, (recordTwo+1),recordThree ,column1, column2,column3, tableName);
-        deviceNameInput.setText("");
-        specDeviceTextArea.setText("");
+        if(!recordOne.isEmpty() && !recordThree.isEmpty()){
+            String column1="Device_Name";
+            String column2="Office_Id";
+            String column3="Device_Properties";
+            String tableName="devices";
+            Functions saveDevice= new Functions();
+            saveDevice.saveThreeRecords(recordOne, (recordTwo+1),recordThree ,column1, column2,column3, tableName);
+            deviceNameInput.setText("");
+            specDeviceTextArea.setText("");  
+        }else{
+           JOptionPane.showMessageDialog(null, "Please fill in fields and create a new device");
+        }
+        
     }//GEN-LAST:event_addDeviceBtnActionPerformed
 
     private void userTabbedMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userTabbedMenuMouseClicked
@@ -1193,15 +1210,21 @@ public class AdminPanel extends javax.swing.JFrame {
         String ipAddress=iPAddressInput.getText().toString();
         String pass=passwordServerInput.getText().toString();
         String userServerName=userNameInputServer.getText().toString();
-        String [] serverDetails={ipAddress,pass,userServerName};
-        String tableName="server";
-        String firstColumn="Host_Ip";
-        String [] columnServerNames={"Host_Ip","Password","Db_Name"};
-        Functions serverInserter=new Functions();
-        serverInserter.saveDetails(columnServerNames, serverDetails, tableName, firstColumn);
-        iPAddressInput.setText("");
-        passwordServerInput.setText("");
-        userNameInputServer.setText("");
+        if(!ipAddress.isEmpty() && !pass.isEmpty() && !userServerName.isEmpty())
+        {
+            String [] serverDetails={ipAddress,pass,userServerName};
+            String tableName="server";
+            String firstColumn="Host_Ip";
+            String [] columnServerNames={"Host_Ip","Password","Db_Name"};
+            Functions serverInserter=new Functions();
+            serverInserter.saveDetails(columnServerNames, serverDetails, tableName, firstColumn);
+            iPAddressInput.setText("");
+            passwordServerInput.setText("");
+            userNameInputServer.setText(""); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Please enter all fields and enter new server details");
+        }
+        
     }//GEN-LAST:event_saveServerBtnActionPerformed
 
     private void assignTaskBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignTaskBtnActionPerformed
@@ -1230,10 +1253,16 @@ public class AdminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         String kTitle=knowledgeTxt.getText().toString();
         String kBody=knowledgeTxtArea.getText().toString();
-        Functions saveKnowlege=new Functions();
-        saveKnowlege.saveTwo(kBody, kTitle, "Knowledge_Details", "Knowledge_Title", "knowledge_base", "Knowledge Base Saved Successfully");
-        knowledgeTxt.setText("");
-        knowledgeTxtArea.setText("");
+        if(!kTitle.isEmpty() && !kBody.isEmpty())
+        {
+            Functions saveKnowlege=new Functions();
+            saveKnowlege.saveTwo(kBody, kTitle, "Knowledge_Details", "Knowledge_Title", "knowledge_base", "Knowledge Base Saved Successfully");
+            knowledgeTxt.setText("");
+            knowledgeTxtArea.setText("");
+        }else{
+          JOptionPane.showMessageDialog(null, "Please fill in all fields");
+        }
+        
     }//GEN-LAST:event_saveKnowlegeBtnActionPerformed
 // list all users
     public void listUsers()

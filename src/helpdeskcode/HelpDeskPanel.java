@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class HelpDeskPanel extends javax.swing.JFrame {
 ResultSet rs;
+//SendSMS sendMyMessage=new SendSMS();
 String usernameResolvedTxt;
     /**
      * Creates new form HelpDeskPanel
@@ -56,19 +57,6 @@ String usernameResolvedTxt;
         jScrollPane2 = new javax.swing.JScrollPane();
         resolvedAdditionalTxtArea = new javax.swing.JTextArea();
         confirmResolveBtn = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        unResolvedTxt = new javax.swing.JTextField();
-        unResolvedBtn = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        ticketUnresolvedCombo = new javax.swing.JComboBox();
-        statusUnConfirmedCombo = new javax.swing.JComboBox();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        additionalUnResolveTxtArea = new javax.swing.JTextArea();
-        cUnResolvedBtn = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         confirmUserNameBtn = new javax.swing.JButton();
@@ -92,6 +80,14 @@ String usernameResolvedTxt;
         senderTxt = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel22 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        messageDetailTxt = new javax.swing.JTextArea();
+        phoneMessageTxt = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        sendMessagePhoneBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         logoutHdUserBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -100,7 +96,6 @@ String usernameResolvedTxt;
         hdUserJMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1069, 556));
 
         jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,7 +144,7 @@ String usernameResolvedTxt;
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Resolved Issues");
+        jLabel2.setText("Issues");
 
         jLabel5.setText("User Name:");
 
@@ -164,7 +159,7 @@ String usernameResolvedTxt;
 
         jLabel7.setText("Status:");
 
-        statusResolvedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fixed" }));
+        statusResolvedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Fixed", "Not Fixed" }));
 
         jLabel8.setText("Addition Information:");
 
@@ -172,7 +167,7 @@ String usernameResolvedTxt;
         resolvedAdditionalTxtArea.setRows(5);
         jScrollPane2.setViewportView(resolvedAdditionalTxtArea);
 
-        confirmResolveBtn.setText("Confirm Resolve");
+        confirmResolveBtn.setText("Confirm");
         confirmResolveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmResolveBtnActionPerformed(evt);
@@ -240,99 +235,7 @@ String usernameResolvedTxt;
                 .addContainerGap(147, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Mark Resolved Issue", jPanel3);
-
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 51, 0));
-        jLabel9.setText("UnResolved Issues");
-
-        jLabel10.setText("User Name:");
-
-        unResolvedBtn.setText("Confirm");
-        unResolvedBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unResolvedBtnActionPerformed(evt);
-            }
-        });
-
-        jLabel11.setText("Ticket Title:");
-
-        jLabel15.setText("Status:");
-
-        jLabel16.setText("Additional Information:");
-
-        statusUnConfirmedCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Not Fixed" }));
-
-        additionalUnResolveTxtArea.setColumns(20);
-        additionalUnResolveTxtArea.setRows(5);
-        jScrollPane3.setViewportView(additionalUnResolveTxtArea);
-
-        cUnResolvedBtn.setText("Confirm unResolved");
-        cUnResolvedBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cUnResolvedBtnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(386, 386, 386)
-                        .addComponent(jLabel9))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(225, 225, 225)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(unResolvedTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(unResolvedBtn))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel16))
-                                .addGap(31, 31, 31)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ticketUnresolvedCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(statusUnConfirmedCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane3)))
-                            .addComponent(cUnResolvedBtn, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(361, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(unResolvedTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(unResolvedBtn))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(ticketUnresolvedCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(statusUnConfirmedCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(cUnResolvedBtn)
-                .addContainerGap(126, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Mark UnResolved Issues", jPanel4);
+        jTabbedPane1.addTab("Issues", jPanel3);
 
         jLabel3.setText("Enter User Name and Confirm:");
 
@@ -522,6 +425,67 @@ String usernameResolvedTxt;
 
         jTabbedPane1.addTab("My Profile", jPanel1);
 
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23.setText("Send SMS");
+
+        jLabel24.setText("Message:");
+
+        messageDetailTxt.setColumns(20);
+        messageDetailTxt.setRows(5);
+        jScrollPane6.setViewportView(messageDetailTxt);
+
+        jLabel25.setText("Phone");
+
+        sendMessagePhoneBtn.setText("Send");
+        sendMessagePhoneBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendMessagePhoneBtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(461, 461, 461)
+                        .addComponent(jLabel23))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sendMessagePhoneBtn)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(phoneMessageTxt)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)))))
+                .addContainerGap(398, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel23)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneMessageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(18, 18, 18)
+                .addComponent(sendMessagePhoneBtn)
+                .addContainerGap(204, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Send SMS", jPanel8);
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
         jLabel1.setText("Welcome to Help Desk Management System HD User Panel");
@@ -607,39 +571,113 @@ String usernameResolvedTxt;
         JOptionPane.showMessageDialog(this,"System was Designed by the IT Team 2014/2015 as the final year project\n Thanks Our Then Supervisor Mr.Ntwari Richard");
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void confirmUserNameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmUserNameBtnActionPerformed
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
         // TODO add your handling code here:
-        String userName=searchUserNameTxt.getText().toString();
-        listHDTask(userName);
-    }//GEN-LAST:event_confirmUserNameBtnActionPerformed
+        //listing all case lists
+        listKnowledgeBase();
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
-    private void confirmResolveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmResolveBtnActionPerformed
+    private void sendMessagePhoneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMessagePhoneBtnActionPerformed
         // TODO add your handling code here:
-        //submitting a resolved case
-        String caseResolved=resolvedTicketCombo.getSelectedItem().toString();
-        String status=statusResolvedCombo.getSelectedItem().toString();
-        String additionalInformation=resolvedAdditionalTxtArea.getText().toString();
-        String sql="update tickets set Status='"+status+"',Additional_Info='"+additionalInformation+"' where Ticket_Title='"+caseResolved+"'";
-        Functions saveResolved=new Functions();
-        saveResolved.updateTable(sql, "Case Marked as Resolved. Details Sent to the Admin");
-        resolvedAdditionalTxtArea.setText("");
+        String myMessage=messageDetailTxt.getText().toString();
+        String phone=phoneMessageTxt.getText().toString();
+        if(!myMessage.isEmpty() && !phone.isEmpty())
+        {
+            SendSMS.init();
+            SendSMS.server = "http://127.0.0.1:8800/";
+            SendSMS.user = "admin";
+            SendSMS.password = "admin";
+            SendSMS.phonenumber = phone;
+            SendSMS.text = myMessage;
+            SendSMS.send();
+            messageDetailTxt.setText("");
+            phoneMessageTxt.setText(""); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill in all fields to proceed");
+        }
         
-    }//GEN-LAST:event_confirmResolveBtnActionPerformed
+
+    }//GEN-LAST:event_sendMessagePhoneBtnActionPerformed
 
     private void sendMessageBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMessageBtnActionPerformed
         // TODO add your handling code here:
         String msgTitle=messageTitleTxt.getText().toString();
         String msgBody=messageBodyTxtArea.getText().toString();
         String sender=senderTxt.getText().toString();
-        //String ArrayValues[]={msgTitle,msgBody,sender};
-        //String tableColumns[]={"message_title","message_body","message_sender"};
-        String tableName="messages";
-        Functions save=new Functions();
-        save.sendMessage(msgTitle, msgBody, sender, "message_title", "message_body", "message_sender", tableName, "Message Successfully Sent.");
-        messageBodyTxtArea.setText("");
-        messageTitleTxt.setText("");
-        senderTxt.setText("");
+        if(!msgBody.isEmpty() && !msgTitle.isEmpty() && !sender.isEmpty())
+        {
+            //String ArrayValues[]={msgTitle,msgBody,sender};
+            //String tableColumns[]={"message_title","message_body","message_sender"};
+            String tableName="messages";
+            Functions save=new Functions();
+            save.sendMessage(msgTitle, msgBody, sender, "message_title", "message_body", "message_sender", tableName, "Message Successfully Sent.");
+            messageBodyTxtArea.setText("");
+            messageTitleTxt.setText("");
+            senderTxt.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill in All fields To Proceed");
+        }
+        
     }//GEN-LAST:event_sendMessageBtnActionPerformed
+
+    private void confirmUserNameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmUserNameBtnActionPerformed
+        // TODO add your handling code here:
+        String userName=searchUserNameTxt.getText().toString();
+        if(!userName.isEmpty())
+        {
+         listHDTask(userName);   
+        }else{
+          JOptionPane.showMessageDialog(null, "Enter User Name To Proceed");
+        }
+        
+    }//GEN-LAST:event_confirmUserNameBtnActionPerformed
+
+    private void confirmResolveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmResolveBtnActionPerformed
+        // TODO add your handling code here:
+        //submitting a resolved case
+        
+        String caseResolved=resolvedTicketCombo.getSelectedItem().toString();
+        String status=statusResolvedCombo.getSelectedItem().toString();
+        String additionalInformation=resolvedAdditionalTxtArea.getText().toString();
+        if(!caseResolved.isEmpty()&& !additionalInformation.isEmpty())
+        {
+          String sql="update tickets set Status='"+status+"',Additional_Info='"+additionalInformation+"' where Ticket_Title='"+caseResolved+"'";
+        String fetchContact="select * from tickets where Ticket_Title='"+caseResolved+"'";
+        Functions saveResolved=new Functions();
+         if(status=="Fixed")
+        {
+            try{
+                ResultSet rs=saveResolved.showRecords(fetchContact);
+                if(rs.next())
+                {
+                    String phone=rs.getString("Contact");
+                    String currentUser=rs.getString("Submitted_By");
+                    String myMessage="Dear "+currentUser+", The HelpDesk team is happy to inform that your issue has been resolved('"+caseResolved+"'). Keep using the HelpDesk system for any issues. Thanks";
+                    SendSMS.init();
+                    SendSMS.server = "http://127.0.0.1:8800/";
+                    SendSMS.user = "admin";
+                    SendSMS.password = "admin";
+                    SendSMS.phonenumber = phone;
+                    SendSMS.text = myMessage;
+                    SendSMS.send();
+                    
+                }
+            }catch (Exception e)
+            {
+               e.printStackTrace();
+            }
+            
+        }else{
+            //do nothing at all
+        }
+        saveResolved.updateTable(sql, "Case Marked as '"+status+"'. Details Sent to the Admin");
+        resolvedAdditionalTxtArea.setText("");  
+        }else{
+           JOptionPane.showMessageDialog(null, "Please Fill in all fields");
+        }
+        
+
+    }//GEN-LAST:event_confirmResolveBtnActionPerformed
 
     private void confirmResolvedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmResolvedBtnActionPerformed
         // TODO add your handling code here:
@@ -648,34 +686,6 @@ String usernameResolvedTxt;
         fillResolvedTaskCombo(usernameResolvedTxt);
         userNameResolveTxt.setText("");
     }//GEN-LAST:event_confirmResolvedBtnActionPerformed
-
-    private void unResolvedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unResolvedBtnActionPerformed
-        // TODO add your handling code here:
-        //handling the unresolved cases 
-        String userNameUnResolved=unResolvedTxt.getText().toString();
-        fillUnResolvedTaskCombo(userNameUnResolved);
-        unResolvedTxt.setText("");
-        
-    }//GEN-LAST:event_unResolvedBtnActionPerformed
-
-    private void cUnResolvedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cUnResolvedBtnActionPerformed
-        // TODO add your handling code here:
-        //submitting unresolved cases is done here
-        String caseUnResolved=ticketUnresolvedCombo.getSelectedItem().toString();
-        String statusUnResolved=statusUnConfirmedCombo.getSelectedItem().toString();
-        String additionalUnResolvedInformation=additionalUnResolveTxtArea.getText().toString();
-        String sql="update tickets set Status='"+statusUnResolved+"',Additional_Info='"+additionalUnResolvedInformation+"' where Ticket_Title='"+caseUnResolved+"'";
-        Functions saveUnResolved=new Functions(); 
-        saveUnResolved.updateTable(sql, "This Ticket Has Been Marked as UnResolved. Details Sent to The Admin");
-        additionalUnResolveTxtArea.setText("");
-        
-    }//GEN-LAST:event_cUnResolvedBtnActionPerformed
-
-    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-        // TODO add your handling code here:
-        //listing all case lists
-        listKnowledgeBase();
-    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     //populating the combo for the case list
     private void fillResolvedTaskCombo(String userName)
@@ -702,29 +712,29 @@ String usernameResolvedTxt;
     }
     }
     
-    private void fillUnResolvedTaskCombo(String userName)
-    {
-        
-        try{
-                Connection conn=DataBaseConnection.getConnection();
-                
-                String sql = "Select t.Ticket_Title from tasks t,tickets ti where t.User_Id='"+userName+"' and ti.Status='Not Fixed'";
-                Statement stmt= conn.prepareStatement(sql);
-                rs= stmt.executeQuery(sql);
-
-                  while(rs.next())
-                  {
-                     String addname=rs.getString("Ticket_Title");
-                     ticketUnresolvedCombo.addItem(addname);
-                      //String ob=sexSelect.getSelectedItem();
-                    }
-                    
-        }
-           catch(Exception e){
-               System.out.println(e);
-
-    }
-    }
+//    private void fillUnResolvedTaskCombo(String userName)
+//    {
+//        
+//        try{
+//                Connection conn=DataBaseConnection.getConnection();
+//                
+//                String sql = "Select t.Ticket_Title from tasks t,tickets ti where t.User_Id='"+userName+"' and ti.Status='Not Fixed'";
+//                Statement stmt= conn.prepareStatement(sql);
+//                rs= stmt.executeQuery(sql);
+//
+//                  while(rs.next())
+//                  {
+//                     String addname=rs.getString("Ticket_Title");
+//                     ticketUnresolvedCombo.addItem(addname);
+//                      //String ob=sexSelect.getSelectedItem();
+//                    }
+//                    
+//        }
+//           catch(Exception e){
+//               System.out.println(e);
+//
+//    }
+//    }
     
     public void listHDTask(String userName)
     {
@@ -813,20 +823,14 @@ String usernameResolvedTxt;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea additionalUnResolveTxtArea;
-    private javax.swing.JButton cUnResolvedBtn;
     private javax.swing.JButton confirmResolveBtn;
     private javax.swing.JButton confirmResolvedBtn;
     private javax.swing.JButton confirmUserNameBtn;
     private javax.swing.JMenuItem hdUserJMenu;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -834,43 +838,44 @@ String usernameResolvedTxt;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable knowledgeBaseHdUserJTable;
     private javax.swing.JButton logoutHdUserBtn;
     private javax.swing.JTextArea messageBodyTxtArea;
+    private javax.swing.JTextArea messageDetailTxt;
     private javax.swing.JTextField messageTitleTxt;
+    private javax.swing.JTextField phoneMessageTxt;
     private javax.swing.JTextArea resolvedAdditionalTxtArea;
     private javax.swing.JComboBox resolvedTicketCombo;
     private javax.swing.JTextField searchUserNameTxt;
     private javax.swing.JButton sendMessageBtn;
+    private javax.swing.JButton sendMessagePhoneBtn;
     private javax.swing.JTextField senderTxt;
     private javax.swing.JComboBox statusResolvedCombo;
-    private javax.swing.JComboBox statusUnConfirmedCombo;
-    private javax.swing.JComboBox ticketUnresolvedCombo;
-    private javax.swing.JButton unResolvedBtn;
-    private javax.swing.JTextField unResolvedTxt;
     private javax.swing.JTextField userNameResolveTxt;
     private javax.swing.JTable yourTasksJTable;
     // End of variables declaration//GEN-END:variables
