@@ -83,6 +83,7 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         userSearchIssues = new javax.swing.JTextField();
         allIssuesBtn = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         logoutOfficialBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -163,6 +164,8 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         jLabel9.setText("Priority Level");
 
         jLabel13.setText("User Name:");
+
+        clientContact.setToolTipText("Format: 0700000000");
 
         jLabel16.setText("Phone Number:");
 
@@ -399,6 +402,19 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Issues Submitted", jPanel5);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1089, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 453, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Send SMS", jPanel6);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
@@ -721,6 +737,7 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane7;

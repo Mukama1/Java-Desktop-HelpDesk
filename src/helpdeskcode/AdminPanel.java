@@ -1107,6 +1107,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
     private void createUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserBtnActionPerformed
         // TODO add your handling code here:
+        //this is done to pick inputs from the textfields
         String userName=userNameInput.getText().toString();
         String password=passInput.getText().toString();
         String sex=sexCombo.getSelectedItem().toString();
@@ -1117,14 +1118,19 @@ public class AdminPanel extends javax.swing.JFrame {
         String dob=dobInput.getText().toString();
         String email=emailInput.getText().toString();
         String phone=phoneInput.getText().toString();
+        //check if the inputs received are not empty
         if(!userName.isEmpty() && !password.isEmpty() && !jobTitle.isEmpty() && !fullName.isEmpty() && !dob.isEmpty() && !email.isEmpty() && !email.isEmpty()){
-          String [] details={userName,password,userType,sex,jobTitle,serviceTime,fullName,dob,email,phone};
+          // all the contents picked from the form are passed in one array
+            String [] details={userName,password,userType,sex,jobTitle,serviceTime,fullName,dob,email,phone};
         String [] columns={"User_Name","Password","User_Type","Sex","Job_Title","Service","Full_Names","DOB","Email","Phone"};
         String tableName="users";
+        //creating an object for the functions class
         saveDetails=new Functions();
 //        System.out.println("\n"+saveDetails.mergeString(columns, "User_Name,"));
 //        System.out.println("\n"+saveDetails.mergeString(details, ""));
+        //calling the method
          saveDetails.saveDetails(columns, details, tableName,"User_Name");
+         
          userNameInput.setText("");
          passInput.setText("");
          fullNameInput.setText("");

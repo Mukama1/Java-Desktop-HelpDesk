@@ -139,6 +139,7 @@ public class Main extends javax.swing.JFrame {
         authUser=new Functions();
         String authUserName=userNameAuthInput.getText().toString();
         String authPassword=passwordAuthInputa.getText().toString();
+        
         if(!authPassword.isEmpty() && !authUserName.isEmpty())
         {
             String returnAuth=authUser.Authentication(authUserName, authPassword);

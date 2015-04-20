@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import sockets.Server;
 
 /**
  *
@@ -164,7 +165,9 @@ public class Functions {
         {
             String userType="";
                 String query = "SELECT * FROM users WHERE User_Name='"+loginId+"' AND Password = '"+Password+"' AND Status='Active'";
-                conn = DataBaseConnection.getConnection();
+                Server connectDb=new Server();
+                conn = connectDb.getConnections();
+                System.out.println(conn);
                 stmt = conn.prepareStatement(query);
                 ResultSet res = stmt.executeQuery();
                 //boolean isCheck=false;

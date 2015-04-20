@@ -652,7 +652,7 @@ String usernameResolvedTxt;
                 {
                     String phone=rs.getString("Contact");
                     String currentUser=rs.getString("Submitted_By");
-                    String myMessage="Dear "+currentUser+", The HelpDesk team is happy to inform that your issue has been resolved('"+caseResolved+"'). Keep using the HelpDesk system for any issues. Thanks";
+                    String myMessage="Dear "+currentUser+", The MUST HelpDesk team is happy to inform that your issue has been resolved('"+caseResolved+"'). Keep using the HelpDesk system for any issues. Thanks";
                     SendSMS.init();
                     SendSMS.server = "http://127.0.0.1:8800/";
                     SendSMS.user = "admin";
