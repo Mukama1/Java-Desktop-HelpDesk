@@ -22,7 +22,7 @@ public class DataBaseConnection {
         
     }
      public static Connection getConnection() throws ClassNotFoundException, SQLException{
-        String username="Martin";
+        String username="CollinsMann";
         String password="help12345";
         String driverName="com.mysql.jdbc.Driver";
         String url="jdbc:mysql://192.168.1.38/help_db";

@@ -29,10 +29,9 @@ public class AdminPanel extends javax.swing.JFrame {
      */
     public AdminPanel() {
         initComponents();
-        fillUserCombo();
         fillUserTaskCombo();
         fillCombo();
-        fillTaskCombo();
+        
     }
 
     /**
@@ -59,7 +58,6 @@ public class AdminPanel extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         createUserBtn = new javax.swing.JButton();
         userNameInput = new javax.swing.JTextField();
-        passInput = new javax.swing.JTextField();
         userTypeCombo = new javax.swing.JComboBox();
         serviceTimeCombo = new javax.swing.JComboBox();
         sexCombo = new javax.swing.JComboBox();
@@ -72,6 +70,7 @@ public class AdminPanel extends javax.swing.JFrame {
         jLabel25 = new javax.swing.JLabel();
         phoneInput = new javax.swing.JTextField();
         jobTitleInput = new javax.swing.JTextField();
+        passwordFieldTxt = new javax.swing.JPasswordField();
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
@@ -114,6 +113,9 @@ public class AdminPanel extends javax.swing.JFrame {
         jLabel29 = new javax.swing.JLabel();
         assignTaskCombo = new javax.swing.JComboBox();
         assignTaskBtn = new javax.swing.JButton();
+        deviceLocationCombo = new javax.swing.JComboBox();
+        jLabel40 = new javax.swing.JLabel();
+        locateTheDevice = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
@@ -207,7 +209,7 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jLabel7.setText("Sex:");
 
-        jLabel8.setText("Pasword:");
+        jLabel8.setText("Password:");
 
         jLabel9.setText("User Type:");
 
@@ -241,23 +243,25 @@ public class AdminPanel extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(createUserBtn)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(18, 18, 18)
+                        .addComponent(createUserBtn))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9)
                             .addComponent(jLabel20)
-                            .addComponent(jLabel23))
-                        .addGap(18, 18, 18)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(userNameInput)
-                            .addComponent(passInput)
                             .addComponent(userTypeCombo, 0, 223, Short.MAX_VALUE)
                             .addComponent(fullNameInput)
-                            .addComponent(dobInput))
+                            .addComponent(dobInput)
+                            .addComponent(passwordFieldTxt))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -287,8 +291,8 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jLabel10)
-                    .addComponent(passInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jobTitleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jobTitleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordFieldTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -327,9 +331,9 @@ public class AdminPanel extends javax.swing.JFrame {
                         .addGap(393, 393, 393)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(134, 134, 134)
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addContainerGap(242, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -690,10 +694,33 @@ public class AdminPanel extends javax.swing.JFrame {
 
         jLabel29.setText("Assign Task:");
 
+        assignTaskCombo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                assignTaskComboMouseClicked(evt);
+            }
+        });
+        assignTaskCombo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                assignTaskComboItemStateChanged(evt);
+            }
+        });
+
         assignTaskBtn.setText("Assign Task");
         assignTaskBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignTaskBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel40.setText("Device Location");
+
+        locateTheDevice.setBackground(new java.awt.Color(0, 0, 255));
+        locateTheDevice.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        locateTheDevice.setForeground(new java.awt.Color(255, 255, 255));
+        locateTheDevice.setText("Locate");
+        locateTheDevice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                locateTheDeviceActionPerformed(evt);
             }
         });
 
@@ -709,14 +736,17 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addGap(365, 365, 365)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel28)
-                    .addComponent(jLabel29))
+                    .addComponent(jLabel29)
+                    .addComponent(jLabel40))
                 .addGap(32, 32, 32)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(helpTaskCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(assignTaskCombo, 0, 324, Short.MAX_VALUE))
-                    .addComponent(assignTaskBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(helpTaskCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(assignTaskCombo, 0, 324, Short.MAX_VALUE)
+                    .addComponent(assignTaskBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deviceLocationCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(locateTheDevice)
+                .addContainerGap(180, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -731,9 +761,14 @@ public class AdminPanel extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(assignTaskCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deviceLocationCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel40)
+                    .addComponent(locateTheDevice))
+                .addGap(19, 19, 19)
                 .addComponent(assignTaskBtn)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
 
         userTabbedMenu.addTab("Assign Tasks", jPanel9);
@@ -1109,7 +1144,7 @@ public class AdminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         //this is done to pick inputs from the textfields
         String userName=userNameInput.getText().toString();
-        String password=passInput.getText().toString();
+        String password=passwordFieldTxt.getText().toString();
         String sex=sexCombo.getSelectedItem().toString();
         String userType=userTypeCombo.getSelectedItem().toString();
         String serviceTime=serviceTimeCombo.getSelectedItem().toString();
@@ -1132,7 +1167,7 @@ public class AdminPanel extends javax.swing.JFrame {
          saveDetails.saveDetails(columns, details, tableName,"User_Name");
          
          userNameInput.setText("");
-         passInput.setText("");
+         passwordFieldTxt.setText("");
          fullNameInput.setText("");
          dobInput.setText("");
          emailInput.setText("");
@@ -1209,6 +1244,12 @@ public class AdminPanel extends javax.swing.JFrame {
         
         //listing all the messages that have been sent
         listMessages();
+        
+        //for populating the user combo when deactivating help desk users
+        fillUserCombo();
+        
+        //fill the task combo
+        fillTaskCombo();
     }//GEN-LAST:event_userTabbedMenuMouseClicked
 
     private void saveServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveServerBtnActionPerformed
@@ -1270,6 +1311,22 @@ public class AdminPanel extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_saveKnowlegeBtnActionPerformed
+
+    private void assignTaskComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_assignTaskComboItemStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_assignTaskComboItemStateChanged
+
+    private void assignTaskComboMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_assignTaskComboMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_assignTaskComboMouseClicked
+
+    private void locateTheDeviceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locateTheDeviceActionPerformed
+        // TODO add your handling code here:
+        String taskString =assignTaskCombo.getSelectedItem().toString();
+        fillDeviceCombo(taskString);
+    }//GEN-LAST:event_locateTheDeviceActionPerformed
 // list all users
     public void listUsers()
     {
@@ -1351,7 +1408,7 @@ public class AdminPanel extends javax.swing.JFrame {
     public void listTickets()
     {
         Functions listTickets =new Functions();
-        String ticketsSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name from tickets t,devices d where d.Device_Id=t.Device_Id";
+        String ticketsSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name from tickets t,devices d where d.Device_Id=t.Device_Id ORDER BY Priority_Level ASC";
         DefaultTableModel ticketModel=(DefaultTableModel) ticketJTable.getModel();
         ticketModel.setRowCount(0);
         try {
@@ -1372,6 +1429,30 @@ public class AdminPanel extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void fillDeviceCombo(String ticketTitle)
+    {
+        
+        try{
+                Connection conn=DataBaseConnection.getConnection();
+                
+                String sql = "Select Device_Location from tickets where Ticket_Title='"+ticketTitle+"' ";
+                Statement stmt= conn.prepareStatement(sql);
+                rs= stmt.executeQuery(sql);
+               deviceLocationCombo.removeAllItems();
+                  while(rs.next())
+                  {
+                     String addname=rs.getString("Device_Location");
+                     deviceLocationCombo.addItem(addname);
+                      //String ob=sexSelect.getSelectedItem();
+                    }
+                    
+        }
+           catch(Exception e){
+               System.out.println(e);
+
+    }
     }
     
     //list all messages
@@ -1402,7 +1483,7 @@ public class AdminPanel extends javax.swing.JFrame {
     public void listUnSolvedTickets()
     {
         Functions listTickets =new Functions();
-        String ticketsSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name,t.Additional_Info from tickets t,devices d where d.Device_Id=t.Device_Id and t.Status='Not Fixed'";
+        String ticketsSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name,t.Additional_Info from tickets t,devices d where d.Device_Id=t.Device_Id and t.Status='Not Fixed' ORDER BY Priority_Level ASC";
         DefaultTableModel ticketModel=(DefaultTableModel) unSolveTicketJTable.getModel();
         ticketModel.setRowCount(0);
         try {
@@ -1461,7 +1542,7 @@ public class AdminPanel extends javax.swing.JFrame {
                 String sql = "Select User_Name from users where User_Type='HelpDesk'";
                 Statement stmt= conn.prepareStatement(sql);
                 rs= stmt.executeQuery(sql);
-
+                userDeactivateCombo.removeAllItems();
                   while(rs.next())
                   {
                      String addname=rs.getString("User_Name");
@@ -1508,6 +1589,7 @@ public class AdminPanel extends javax.swing.JFrame {
                 String sql = "Select Ticket_Title from tickets where Status='Not Fixed'";
                 Statement stmt= conn.prepareStatement(sql);
                 rs= stmt.executeQuery(sql);
+                assignTaskCombo.removeAllItems();
 
                   while(rs.next())
                   {
@@ -1567,6 +1649,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JComboBox assignTaskCombo;
     private javax.swing.JButton createUserBtn;
     private javax.swing.JButton deactivateUserBtn;
+    private javax.swing.JComboBox deviceLocationCombo;
     private javax.swing.JTextField deviceNameInput;
     private javax.swing.JPanel devicePanel;
     private javax.swing.JTable devicesJTable;
@@ -1609,6 +1692,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1643,12 +1727,13 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JTextField jobTitleInput;
     private javax.swing.JTextField knowledgeTxt;
     private javax.swing.JTextArea knowledgeTxtArea;
+    private javax.swing.JButton locateTheDevice;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JTable messagesJTable;
     private javax.swing.JComboBox officeIdInput;
     private javax.swing.JTextField officeNameInput;
     private javax.swing.JTable officesJTable;
-    private javax.swing.JTextField passInput;
+    private javax.swing.JPasswordField passwordFieldTxt;
     private javax.swing.JTextField passwordServerInput;
     private javax.swing.JTextField phoneInput;
     private javax.swing.JButton saveKnowlegeBtn;

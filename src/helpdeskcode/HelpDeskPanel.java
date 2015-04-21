@@ -78,8 +78,6 @@ String usernameResolvedTxt;
         sendMessageBtn = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
         senderTxt = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel22 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
@@ -251,7 +249,7 @@ String usernameResolvedTxt;
 
             },
             new String [] {
-                "Ticket Title", "Ticket Details", "Status", "Priority Level", "Submission Date", "Device"
+                "Ticket Title", "Ticket Details", "Status", "Priority Level", "Submission Date", "Device", "Location"
             }
         ));
         jScrollPane1.setViewportView(yourTasksJTable);
@@ -402,29 +400,6 @@ String usernameResolvedTxt;
 
         jTabbedPane1.addTab("Contact Admin", jPanel7);
 
-        jLabel22.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel22.setText("Still Under Construction.");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(331, 331, 331)
-                .addComponent(jLabel22)
-                .addContainerGap(478, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(156, 156, 156)
-                .addComponent(jLabel22)
-                .addContainerGap(281, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("My Profile", jPanel1);
-
         jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 0, 0));
         jLabel23.setText("Send SMS");
@@ -545,9 +520,9 @@ String usernameResolvedTxt;
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(logoutHdUserBtn)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 494, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -644,6 +619,7 @@ String usernameResolvedTxt;
           String sql="update tickets set Status='"+status+"',Additional_Info='"+additionalInformation+"' where Ticket_Title='"+caseResolved+"'";
         String fetchContact="select * from tickets where Ticket_Title='"+caseResolved+"'";
         Functions saveResolved=new Functions();
+        saveResolved.saveTwoNoMessage(caseResolved, additionalInformation, "Knowledge_Title", "Knowledge_Details", "knowledge_base");
          if(status=="Fixed")
         {
             try{
@@ -694,10 +670,10 @@ String usernameResolvedTxt;
         try{
                 Connection conn=DataBaseConnection.getConnection();
                 
-                String sql = "Select t.Ticket_Title from tasks t,tickets ti where t.User_Id='"+userName+"' and ti.Status='Not Fixed'";
+                String sql = "Select t.Ticket_Title from tasks t,tickets ti where t.User_Id='"+userName+"' and ti.Status='Not Fixed' and ti.Ticket_Title=t.Ticket_Title";
                 Statement stmt= conn.prepareStatement(sql);
                 rs= stmt.executeQuery(sql);
-
+                resolvedTicketCombo.removeAllItems();
                   while(rs.next())
                   {
                      String addname=rs.getString("Ticket_Title");
@@ -739,7 +715,7 @@ String usernameResolvedTxt;
     public void listHDTask(String userName)
     {
         Functions listTickets =new Functions();
-        String hdSql="select t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name from tickets t,devices d,tasks ta where d.Device_Id=t.Device_Id"
+        String hdSql="select t.Device_Location,t.Ticket_Title,t.Ticket_Details,t.Status,t.Priority_Level,t.Date,d.Device_Name from tickets t,devices d,tasks ta where d.Device_Id=t.Device_Id"
                 + " and ta.Ticket_Title=t.Ticket_Title and ta.User_Id='"+userName+"'";
         DefaultTableModel hdModel=(DefaultTableModel) yourTasksJTable.getModel();
         hdModel.setRowCount(0);
@@ -754,7 +730,8 @@ String usernameResolvedTxt;
                 String priorityLevel=rs.getString("Priority_Level");
                 String date=rs.getString("Date");
                 String deviceName=rs.getString("Device_Name");
-                hdModel.addRow(new Object[]{no,ticketDetails,status,date,priorityLevel,deviceName});
+                String locateDevice=rs.getString("Device_Location");
+                hdModel.addRow(new Object[]{no,ticketDetails,status,date,priorityLevel,deviceName,locateDevice});
             }
             //usersModel.fireTableDataChanged();
         } catch (ClassNotFoundException ex) {
@@ -837,7 +814,6 @@ String usernameResolvedTxt;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
@@ -850,7 +826,6 @@ String usernameResolvedTxt;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;

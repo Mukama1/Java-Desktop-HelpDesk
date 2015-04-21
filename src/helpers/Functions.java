@@ -166,7 +166,7 @@ public class Functions {
             String userType="";
                 String query = "SELECT * FROM users WHERE User_Name='"+loginId+"' AND Password = '"+Password+"' AND Status='Active'";
                 Server connectDb=new Server();
-                conn = connectDb.getConnections();
+                conn = DataBaseConnection.getConnection();
                 System.out.println(conn);
                 stmt = conn.prepareStatement(query);
                 ResultSet res = stmt.executeQuery();
@@ -274,6 +274,24 @@ public class Functions {
             stmt.setString(3,recordThree);
             stmt.execute();
             dialogBuilder(message);
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public void saveTwoNoMessage(String recordOne,String recordTwo,String columnName1,String columnName2,String tableName)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            String sql="insert into "+tableName+" (" +columnName1+","+ columnName2+ ") values (?,?)";
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, recordOne );
+            stmt.setString(2, recordTwo);
+            stmt.execute();
+           // dialogBuilder(message);
             stmt.close();
         }catch(ClassNotFoundException | SQLException e)
         {
