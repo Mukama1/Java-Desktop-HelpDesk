@@ -146,6 +146,10 @@ public class AdminPanel extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         messagesJTable = new javax.swing.JTable();
         jLabel39 = new javax.swing.JLabel();
+        jPanel18 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        trackLogsJTable = new javax.swing.JTable();
+        jLabel41 = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         aboutJOptionMenu = new javax.swing.JMenuBar();
@@ -1032,6 +1036,52 @@ public class AdminPanel extends javax.swing.JFrame {
 
         userTabbedMenu.addTab("Messages", jPanel17);
 
+        trackLogsJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Help Desk User", "Task Assigned", "Ticket Sent On", "Ticket Assigned On", "Ticket Fixed On"
+            }
+        ));
+        jScrollPane9.setViewportView(trackLogsJTable);
+        if (trackLogsJTable.getColumnModel().getColumnCount() > 0) {
+            trackLogsJTable.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        jLabel41.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel41.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel41.setText("Track Logs");
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addContainerGap(444, Short.MAX_VALUE)
+                .addComponent(jLabel41)
+                .addGap(481, 481, 481))
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addGap(173, 173, 173)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 793, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(88, Short.MAX_VALUE)))
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel41)
+                .addContainerGap(393, Short.MAX_VALUE))
+            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel18Layout.createSequentialGroup()
+                    .addGap(44, 44, 44)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                    .addGap(44, 44, 44)))
+        );
+
+        userTabbedMenu.addTab("Track Logs", jPanel18);
+
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1250,6 +1300,9 @@ public class AdminPanel extends javax.swing.JFrame {
         
         //fill the task combo
         fillTaskCombo();
+        
+        //tracking logs
+        listTrackedChanges();
     }//GEN-LAST:event_userTabbedMenuMouseClicked
 
     private void saveServerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveServerBtnActionPerformed
@@ -1278,8 +1331,14 @@ public class AdminPanel extends javax.swing.JFrame {
         // TODO add your handling code here:
         String ticketTitle=assignTaskCombo.getSelectedItem().toString();
         String userName=(helpTaskCombo.getSelectedItem().toString());
+        
         Functions saveTask=new Functions();
+        String date=saveTask.getCurrentTimeStamp();
+        String updateTaskLog="update task_log set User='"+userName+"', Assigned_On='"+date+"' where Task='"+ticketTitle+"'";
+        //saveTask.saveThreeNoMessage(userName,date,ticketTitle,"User", "Sent_On","Task" ,"task_log");
+        
         saveTask.saveTwo(ticketTitle, userName, "Ticket_Title", "User_Id", "tasks","Task Has Been Assigned Successfully To: "+userName);
+        saveTask.updateTableNoMessage(updateTaskLog);
     }//GEN-LAST:event_assignTaskBtnActionPerformed
 
     private void deactivateUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deactivateUserBtnActionPerformed
@@ -1422,6 +1481,31 @@ public class AdminPanel extends javax.swing.JFrame {
                 String date=rs.getString("Date");
                 String deviceName=rs.getString("Device_Name");
                 ticketModel.addRow(new Object[]{no,ticketDetails,status,date,priorityLevel,deviceName});
+            }
+            //usersModel.fireTableDataChanged();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void listTrackedChanges()
+    {
+        Functions listTickets =new Functions();
+        String ticketsSql="select * from task_log order by Id Desc";
+        DefaultTableModel ticketModel=(DefaultTableModel) trackLogsJTable.getModel();
+        ticketModel.setRowCount(0);
+        try {
+            ResultSet rs=listTickets.showRecords(ticketsSql);
+            while(rs.next())
+            {
+                String user=rs.getString("User");
+                String task=rs.getString("Task");
+                String sent=rs.getString("Sent_On");
+                String assigned=rs.getString("Assigned_On");
+                String resolved=rs.getString("Resolved");
+                ticketModel.addRow(new Object[]{user,task,sent,assigned,resolved});
             }
             //usersModel.fireTableDataChanged();
         } catch (ClassNotFoundException ex) {
@@ -1693,6 +1777,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1708,6 +1793,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
     private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1724,6 +1810,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextField jobTitleInput;
     private javax.swing.JTextField knowledgeTxt;
     private javax.swing.JTextArea knowledgeTxtArea;
@@ -1742,6 +1829,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private javax.swing.JComboBox sexCombo;
     private javax.swing.JTextArea specDeviceTextArea;
     private javax.swing.JTable ticketJTable;
+    private javax.swing.JTable trackLogsJTable;
     private javax.swing.JTable unSolveTicketJTable;
     private javax.swing.JComboBox userDeactivateCombo;
     private javax.swing.JTextField userNameInput;

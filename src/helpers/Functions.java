@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import sockets.Server;
@@ -292,6 +294,54 @@ public class Functions {
             stmt.setString(2, recordTwo);
             stmt.execute();
            // dialogBuilder(message);
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public  String getCurrentTimeStamp() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        return strDate;
+}
+    
+    /**
+     *
+     * @param recordOne
+     * @param recordTwo
+     * @param recordThree
+     * @param columnName1
+     * @param columnName2
+     * @param columnName3
+     * @param tableName
+     */
+    public void saveThreeNoMessage(String recordOne,String recordTwo,String recordThree,String columnName1,String columnName2,String columnName3,String tableName)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            String sql="insert into "+tableName+" (" +columnName1+","+ columnName2+ ","+columnName3+") values (?,?,?)";
+            stmt=conn.prepareStatement(sql);
+            stmt.setString(1, recordOne );
+            stmt.setString(2, recordTwo);
+            stmt.setString(3,recordThree);
+            stmt.execute();
+            //dialogBuilder(message);
+            stmt.close();
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void updateTableNoMessage(String sql)
+    {
+        try{
+            conn=DataBaseConnection.getConnection();
+            stmt=conn.prepareStatement(sql);
+            stmt.execute();
+//            dialogBuilder(message);
             stmt.close();
         }catch(ClassNotFoundException | SQLException e)
         {

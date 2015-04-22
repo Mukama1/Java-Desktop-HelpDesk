@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2015 at 07:37 PM
+-- Generation Time: Apr 22, 2015 at 02:31 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `knowledge_base` (
   `Knowledge_Title` varchar(75) DEFAULT NULL,
   `Knowledge_Details` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`Knowledge_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `knowledge_base`
@@ -68,7 +68,12 @@ INSERT INTO `knowledge_base` (`Knowledge_Id`, `Knowledge_Title`, `Knowledge_Deta
 (1, 'Computers Repairs', 'Sample information'),
 (2, 'test', 'test'),
 (3, '', ''),
-(4, 'disk failure', 'Please reboot machine');
+(4, 'disk failure', 'Please reboot machine'),
+(5, 'Testing Location', 'fixed already'),
+(6, 'checkers one', 'resolved'),
+(7, 'checkone', 'chejced'),
+(8, 'Basic', 'hhh'),
+(9, 'Final Users ', 'fixed');
 
 -- --------------------------------------------------------
 
@@ -181,7 +186,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `Ticket_Title` varchar(225) NOT NULL,
   `User_Id` varchar(100) NOT NULL,
   PRIMARY KEY (`Task_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `tasks`
@@ -197,7 +202,43 @@ INSERT INTO `tasks` (`Task_Id`, `Date`, `Ticket_Title`, `User_Id`) VALUES
 (7, '2015-04-18 06:07:04', 'Computer Doesnt Read a flash', 'hduser'),
 (8, '2015-04-19 20:38:39', 'Laptop Does Boot', 'hduser'),
 (9, '2015-04-21 16:07:25', 'Basic', 'hduser'),
-(10, '2015-04-21 18:36:54', 'Help', 'hduser');
+(10, '2015-04-21 18:36:54', 'Help', 'hduser'),
+(11, '2015-04-22 01:50:39', 'Testing Location', 'hduser'),
+(12, '2015-04-22 01:50:53', 'Testing Location', 'hduser'),
+(13, '2015-04-22 01:52:20', 'Testing Location', 'hduser'),
+(14, '2015-04-22 01:55:47', 'Testing Location', 'hduser'),
+(15, '2015-04-22 02:04:37', 'checkers one', 'hduser'),
+(16, '2015-04-22 02:06:57', 'checkers one', 'hduser'),
+(17, '2015-04-22 02:08:25', 'checkers one', 'hduser'),
+(18, '2015-04-22 02:19:44', 'Final Trial', 'hduser'),
+(19, '2015-04-22 02:21:43', 'Final Users ', 'hduser');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `task_log`
+--
+
+CREATE TABLE IF NOT EXISTS `task_log` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Task` varchar(100) NOT NULL DEFAULT 'null',
+  `User` varchar(45) NOT NULL DEFAULT 'null',
+  `Sent_On` varchar(100) NOT NULL DEFAULT 'null',
+  `Assigned_On` varchar(100) NOT NULL DEFAULT 'null',
+  `Resolved` varchar(100) NOT NULL DEFAULT 'null',
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data for table `task_log`
+--
+
+INSERT INTO `task_log` (`Id`, `Task`, `User`, `Sent_On`, `Assigned_On`, `Resolved`) VALUES
+(1, 'null', 'hduser', '2015-04-21 18:52:20', 'null', 'null'),
+(2, 'Testing Location', 'hduser', '2015-04-21 18:55:47', 'null', 'null'),
+(3, 'Basic', '', '2015-04-21 19:00:24', 'null', '2015-04-21 19:17:33'),
+(4, 'Final Trial', 'null', '2015-04-21 19:19:13', 'null', 'null'),
+(5, 'Final Users ', 'hduser', '2015-04-21 19:21:17', '2015-04-21 19:21:43', '2015-04-21 19:22:35');
 
 -- --------------------------------------------------------
 
@@ -220,7 +261,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   `Device_Location` varchar(56) NOT NULL,
   PRIMARY KEY (`Ticket_Id`),
   KEY `FKtickets209676` (`Device_Id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `tickets`
@@ -233,20 +274,24 @@ INSERT INTO `tickets` (`Ticket_Id`, `Ticket_Title`, `Ticket_Details`, `Status`, 
 (5, '', '', 'Not Fixed', 2, '2015-04-06 13:16:38', 'High', 0, '0', '', '', ''),
 (6, 'checking', 'checking', 'Not Fixed', 1, '2015-04-06 13:28:09', 'Low', 0, '0', '', '', ''),
 (7, 'checker one', 'checker two', 'Not Fixed', 1, '2015-04-06 14:21:05', 'Moderate', 0, '0', '', '', ''),
-(8, 'checkone', 'check three', 'Not Fixed', 1, '2015-04-06 14:27:59', 'Low', 0, '0', '', '', ''),
+(8, 'checkone', 'check three', 'Fixed', 1, '2015-04-06 14:27:59', 'Low', 0, 'chejced', '', '', ''),
 (9, 'One', 'two', 'Not Fixed', 1, '2015-04-06 14:31:07', 'Low', 0, '0', '', '', ''),
 (10, 'onesa', 'checkers', 'Fixed', 1, '2015-04-06 14:39:45', 'Low', 0, 'working fine now', '', '', ''),
 (11, 'one', 'two', 'Not Fixed', 1, '2015-04-06 14:45:31', 'Low', 0, '0', '', '', ''),
 (12, 'hey', 'hey one', 'Not Fixed', 2, '2015-04-06 14:53:25', 'Low', 0, '0', '', '', ''),
 (13, 'sikcs', 'ashhas', 'Not Fixed', 1, '2015-04-06 15:09:03', 'Moderate', 0, '0', '', '', ''),
-(14, 'Basic', 'basic', 'Not Fixed', 1, '2015-04-06 15:14:21', 'High', 0, '0', '', '', ''),
+(14, 'Basic', 'basic', 'Fixed', 1, '2015-04-06 15:14:21', 'High', 0, 'hhh', '', '', ''),
 (15, 'one', 'three', 'Not Fixed', 1, '2015-04-06 15:28:01', 'Low', 0, '0', '', '', ''),
 (16, 'Laptop doesnt boot', 'Boot sequence is probaly faulty', 'Fixed', 1, '2015-04-08 11:00:09', 'Low', 1, 'checked and now working very fine....', 'officialuser', '', ''),
 (17, 'Computer Doesnt Read a flash', 'please come and check why the flash is not being read', 'Fixed', 1, '2015-04-18 06:05:29', 'Low', 1, 'Been fixed', 'officialuser', '0706148080', ''),
 (18, 'test', 'test', 'Not Fixed', 1, '2015-04-18 06:57:50', 'Low', 1, 'Not Yet Fixed', 'officialuser', '0770778373', ''),
 (19, 'Laptop Does Boot', 'Milk spilled on it. Key board and power not functional', 'Fixed', 1, '2015-04-19 20:38:12', 'High', 1, 'Problem resolved', 'officialuser', '0706198189', ''),
 (20, 'Help', 'Ticket One	', 'Not Fixed', 1, '2015-04-21 18:33:04', 'Low', 1, 'Not Yet Fixed', 'officialuser', '0700393673', 'Lab IV'),
-(21, 'Testing Location', 'test location	', 'Not Fixed', 1, '2015-04-21 19:02:26', 'Low', 1, 'Not Yet Fixed', 'officialuser', '0700898789', 'Lab II');
+(21, 'Testing Location', 'test location	', 'Fixed', 1, '2015-04-21 19:02:26', 'Low', 1, 'fixed already', 'officialuser', '0700898789', 'Lab II'),
+(22, 'checkers one', 'checkers one', 'Fixed', 1, '2015-04-22 01:59:31', 'Low', 1, 'resolved', 'officialuser', '070098765', 'Lab IV'),
+(23, 'checkers one', 'checkers', 'Fixed', 1, '2015-04-22 02:00:24', 'Low', 1, 'resolved', 'officialuser', '0700987766', 'Dean'),
+(24, 'Final Trial', 'trials', 'Not Fixed', 1, '2015-04-22 02:19:13', 'Low', 1, 'Not Yet Fixed', 'officialuser', '07000987774', 'Dean'),
+(25, 'Final Users ', 'guys finsal', 'Fixed', 1, '2015-04-22 02:21:17', 'Low', 1, 'fixed', 'officialuser', '070098773', 'Dean');
 
 -- --------------------------------------------------------
 

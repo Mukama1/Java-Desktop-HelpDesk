@@ -618,11 +618,16 @@ String usernameResolvedTxt;
         {
           String sql="update tickets set Status='"+status+"',Additional_Info='"+additionalInformation+"' where Ticket_Title='"+caseResolved+"'";
         String fetchContact="select * from tickets where Ticket_Title='"+caseResolved+"'";
+        
         Functions saveResolved=new Functions();
+        String date=saveResolved.getCurrentTimeStamp();
+        String updateTaskLog="update task_log set Resolved='"+date+"' where Task='"+caseResolved+"'";
+        
         saveResolved.saveTwoNoMessage(caseResolved, additionalInformation, "Knowledge_Title", "Knowledge_Details", "knowledge_base");
          if(status=="Fixed")
         {
             try{
+                saveResolved.updateTableNoMessage(updateTaskLog);
                 ResultSet rs=saveResolved.showRecords(fetchContact);
                 if(rs.next())
                 {

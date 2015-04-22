@@ -86,6 +86,13 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         userSearchIssues = new javax.swing.JTextField();
         allIssuesBtn = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
+        jLabel23 = new javax.swing.JLabel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        messageDetailTxt = new javax.swing.JTextArea();
+        phoneMessageTxt = new javax.swing.JTextField();
+        sendMessagePhoneBtn = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         logoutOfficialBtn = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -414,15 +421,63 @@ public class OtherUsersPanel extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Issues Submitted", jPanel5);
 
+        jLabel23.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel23.setText("Send SMS");
+
+        messageDetailTxt.setColumns(20);
+        messageDetailTxt.setRows(5);
+        jScrollPane6.setViewportView(messageDetailTxt);
+
+        sendMessagePhoneBtn.setText("Send");
+        sendMessagePhoneBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendMessagePhoneBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel25.setText("Phone");
+
+        jLabel24.setText("Message:");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1089, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(461, 461, 461)
+                        .addComponent(jLabel23))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25))
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sendMessagePhoneBtn)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(phoneMessageTxt)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)))))
+                .addContainerGap(385, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 453, Short.MAX_VALUE)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(jLabel23)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel24)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phoneMessageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
+                .addGap(18, 18, 18)
+                .addComponent(sendMessagePhoneBtn)
+                .addContainerGap(191, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Send SMS", jPanel6);
@@ -516,8 +571,9 @@ public class OtherUsersPanel extends javax.swing.JFrame {
             Main getUsersId=new Main();
             theUserId =getUsersId.getUserId();
             //JOptionPane.showMessageDialog(null, "This is the userId: "+ theUserId);
-
+            String date=save.getCurrentTimeStamp();
             save.saveDetails(tableFields, ticketDetails, tableName, "Ticket_Title");
+            save.saveTwoNoMessage(ticketSub, date, "Task", "Sent_On", "task_log");
             ticketSubject.setText("");
             ticketTxtArea.setText("");
             clientContact.setText(""); 
@@ -561,6 +617,27 @@ public class OtherUsersPanel extends javax.swing.JFrame {
         
         userSearchIssues.setText("");
     }//GEN-LAST:event_allIssuesBtnActionPerformed
+
+    private void sendMessagePhoneBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendMessagePhoneBtnActionPerformed
+        // TODO add your handling code here:
+        String myMessage=messageDetailTxt.getText().toString();
+        String phone=phoneMessageTxt.getText().toString();
+        if(!myMessage.isEmpty() && !phone.isEmpty())
+        {
+            SendSMS.init();
+            SendSMS.server = "http://127.0.0.1:8800/";
+            SendSMS.user = "admin";
+            SendSMS.password = "admin";
+            SendSMS.phonenumber = phone;
+            SendSMS.text = myMessage;
+            SendSMS.send();
+            messageDetailTxt.setText("");
+            phoneMessageTxt.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill in all fields to proceed");
+        }
+
+    }//GEN-LAST:event_sendMessagePhoneBtnActionPerformed
 //fill the knowledgebase
     public void listKnowledgeBase()
     {
@@ -762,6 +839,9 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -780,16 +860,20 @@ public class OtherUsersPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable knowledgeBaseJTable;
     private javax.swing.JButton logoutOfficialBtn;
+    private javax.swing.JTextArea messageDetailTxt;
     private javax.swing.JComboBox officeCombo;
     private javax.swing.JMenuItem officialUserJMenu;
+    private javax.swing.JTextField phoneMessageTxt;
     private javax.swing.JButton previewIssuesBtn;
     private javax.swing.JComboBox priorityCombo;
     private javax.swing.JTable resolvedCases;
+    private javax.swing.JButton sendMessagePhoneBtn;
     private javax.swing.JButton sendTicketBtn;
     private javax.swing.JComboBox ticketCombo;
     private javax.swing.JTextField ticketSubject;
