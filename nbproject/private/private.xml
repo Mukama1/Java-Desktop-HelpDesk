@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/sockets/RmiClient.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/sockets/Server.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/sockets/Client.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpdeskcode/Main.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/sockets/RmiServerIntf.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/sockets/SocketServer.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpers/Functions.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpdeskcode/AdminPanel.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpdeskcode/OtherUsersPanel.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpdeskcode/SendSMS.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/sockets/RmiServer.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpdeskcode/HelpDeskPanel.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpdeskcode/DataBaseConnection.java</file>
-            <file>file:/F:/Clients/Third%20Year%20Projects-2014-2015/Help%20Desk/HelpDeskCode/src/helpdeskcode/DBConnect.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
